@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.spudg.tricrypto.databinding.ActivityMarketBinding
 import drewcarlson.coingecko.CoinGeckoClient
-import drewcarlson.coingecko.models.coins.CoinFullData
+import drewcarlson.coingecko.models.coins.CoinMarkets
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -27,27 +27,42 @@ class MarketActivity : AppCompatActivity() {
     private fun setUpCoinList() = runBlocking {
         launch {
 
-            val coinList = arrayListOf<CoinFullData>(
-                coinGecko.getCoinById("bitcoin"),
-                coinGecko.getCoinById("ethereum"),
-                coinGecko.getCoinById("tether"),
-                coinGecko.getCoinById("binancecoin"),
-                coinGecko.getCoinById("cardano"),
-                coinGecko.getCoinById("ripple"),
-                coinGecko.getCoinById("dogecoin"),
-                coinGecko.getCoinById("usd-coin"),
-                coinGecko.getCoinById("polkadot"),
-                coinGecko.getCoinById("binance-usd"),
-                coinGecko.getCoinById("uniswap"),
-                coinGecko.getCoinById("bitcoin-cash"),
-                coinGecko.getCoinById("litecoin"),
-                coinGecko.getCoinById("solana"),
-                coinGecko.getCoinById("chainlink")
-            )
+            val coinList = coinGecko.getCoinMarkets("gbp")
+            val topTenCoins: ArrayList<CoinMarkets> = arrayListOf(
+                coinList.markets[0],
+                coinList.markets[1],
+                coinList.markets[2],
+                coinList.markets[3],
+                coinList.markets[4],
+                coinList.markets[5],
+                coinList.markets[6],
+                coinList.markets[7],
+                coinList.markets[8],
+                coinList.markets[9],
+                coinList.markets[10],
+                coinList.markets[11],
+                coinList.markets[12],
+                coinList.markets[13],
+                coinList.markets[14],
+                coinList.markets[15],
+                coinList.markets[16],
+                coinList.markets[17],
+                coinList.markets[18],
+                coinList.markets[19],
+                coinList.markets[20],
+                coinList.markets[21],
+                coinList.markets[22],
+                coinList.markets[23],
+                coinList.markets[24],
+                coinList.markets[25],
+                coinList.markets[26],
+                coinList.markets[27],
+                coinList.markets[28],
+                coinList.markets[29])
 
             val manager = LinearLayoutManager(this@MarketActivity)
             bindingMarket.rvCoins.layoutManager = manager
-            val coinAdapter = CoinListAdapter(coinList)
+            val coinAdapter = CoinListAdapter(topTenCoins)
             bindingMarket.rvCoins.adapter = coinAdapter
 
         }

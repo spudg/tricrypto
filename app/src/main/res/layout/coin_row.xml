@@ -31,7 +31,7 @@
                     android:layout_marginStart="20dp"
                     android:fontFamily="@font/open_sans_light"
                     android:textColor="#212121"
-                    android:textSize="24sp"
+                    android:textSize="16sp"
                     tools:text="Bitcoin" />
 
             </LinearLayout>
@@ -53,9 +53,10 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_light"
                         android:text="+ 45.4%"
+                        android:layout_marginStart="5dp"
                         android:layout_marginEnd="10dp"
                         android:textColor="@android:color/holo_green_dark"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="italic" />
 
                     <TextView
@@ -65,7 +66,7 @@
                         android:layout_marginEnd="10dp"
                         android:fontFamily="@font/open_sans_light"
                         android:textColor="#212121"
-                        android:textSize="20sp"
+                        android:textSize="14sp"
                         tools:text="$734,135.26" />
 
                 </LinearLayout>
@@ -75,5 +76,12 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/marketCap"
+        android:layout_width="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_height="wrap_content"
+        android:text="MctCap"/>
 
 </LinearLayout>
