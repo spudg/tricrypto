@@ -27,7 +27,7 @@ class MarketActivity : AppCompatActivity() {
     private fun setUpCoinList() = runBlocking {
         launch {
 
-            val coinList = coinGecko.getCoinMarkets("gbp")
+            val coinList = coinGecko.getCoinMarkets("gbp",null,null,null,null,true)
             val topTenCoins: ArrayList<CoinMarkets> = arrayListOf(
                 coinList.markets[0],
                 coinList.markets[1],
