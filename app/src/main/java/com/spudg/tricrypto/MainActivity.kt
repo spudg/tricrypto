@@ -24,10 +24,9 @@ class MainActivity : AppCompatActivity() {
         val view = bindingMain.root
         setContentView(view)
 
-        bindingMain.portfolioBtn.setOnClickListener {
+        bindingMain.marketBtn.setOnClickListener {
             val intent = Intent(this, MarketActivity::class.java)
             startActivity(intent)
-            finish()
         }
     }
 

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".CoinActivity">
+
+    <TextView
+        android:id="@+id/symbol"
+        android:layout_width="match_parent"
+        android:text="BTC"
+        android:fontFamily="@font/open_sans_light"
+        android:textColor="#212121"
+        android:textSize="24sp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:text="Bitcoin"
+        android:fontFamily="@font/open_sans_light"
+        android:textColor="#212121"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="match_parent"
+        android:text="£41,222.33"
+        android:fontFamily="@font/open_sans_light"
+        android:textColor="#212121"
+        android:textSize="24sp"
+        android:layout_height="wrap_content" />
+
+
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/chart7Days"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="5dp" />
+
+    <TextView
+        android:id="@+id/mktCap"
+        android:layout_width="match_parent"
+        android:text="£420,333,212,423"
+        android:fontFamily="@font/open_sans_light"
+        android:textColor="#212121"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
