@@ -29,12 +29,12 @@ class MarketActivity : AppCompatActivity() {
     private fun setUpCoinList() = runBlocking {
         launch {
 
-            val coinList = coinGecko.getCoinMarkets("gbp",null,null,null,null,true)
+            val coinList = coinGecko.getCoinMarkets("usd",null,null,null,null,true)
             val allCoins = arrayListOf<CoinMarkets>()
+
             repeat (coinList.markets.size) {
                 allCoins.add(coinList.markets[it])
             }
-            Log.e("Test",allCoins.size.toString())
 
             val manager = LinearLayoutManager(this@MarketActivity)
             bindingMarket.rvCoins.layoutManager = manager

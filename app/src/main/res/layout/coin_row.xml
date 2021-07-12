@@ -3,35 +3,64 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coinRow"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
+    android:padding="10dp"
     android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/coin_row_background"
+    android:elevation="20dp"
     android:orientation="vertical">
 
     <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
 
-        <TextView
-            android:id="@+id/name"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:fontFamily="@font/open_sans_light"
-            android:textColor="#212121"
-            android:textSize="16sp"
-            tools:text="Bitcoin (BTC)" />
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/open_sans_light"
+                android:textColor="#212121"
+                android:textSize="16sp"
+                tools:text="Bitcoin (BTC)" />
 
             <TextView
                 android:id="@+id/dailyChange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans_light"
-                android:text="£1.02"
+                android:text="0.09%"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:textColor="@android:color/holo_green_dark"
                 android:textSize="14sp"
                 android:textStyle="italic" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/price"
@@ -40,8 +69,13 @@
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/open_sans_light"
                 android:textColor="#212121"
+                android:layout_marginStart="20dp"
                 android:textSize="14sp"
                 tools:text="£24,511.01" />
+
+        </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
