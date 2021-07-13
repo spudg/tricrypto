@@ -1,25 +1,18 @@
 package com.spudg.tricrypto
 
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.*
 import com.spudg.tricrypto.databinding.ActivityCoinBinding
-import com.spudg.tricrypto.databinding.ActivityMarketBinding
 import drewcarlson.coingecko.CoinGeckoClient
-import drewcarlson.coingecko.models.coins.CoinFullData
-import drewcarlson.coingecko.models.coins.CoinMarkets
 import drewcarlson.coingecko.models.coins.MarketChart
 import io.ktor.client.engine.android.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import java.text.DateFormat
 import java.text.DecimalFormat
 import java.text.NumberFormat
 
@@ -65,8 +58,16 @@ class CoinActivity : AppCompatActivity() {
             val percentFormatter: NumberFormat = DecimalFormat("#,##0.00%")
             val number0dpFormatter: NumberFormat = DecimalFormat("#,##0")
 
-            val coin = coinGecko.getCoinMarkets("usd",Globals.SELECTED_COIN,null,null,null,true).markets[0]
-            val chartData: MarketChart = coinGecko.getCoinMarketChartById(Globals.SELECTED_COIN, "usd", days)
+            val coin = coinGecko.getCoinMarkets(
+                "usd",
+                Globals.SELECTED_COIN,
+                null,
+                null,
+                null,
+                true
+            ).markets[0]
+            val chartData: MarketChart =
+                coinGecko.getCoinMarketChartById(Globals.SELECTED_COIN, "usd", days)
 
             Glide.with(applicationContext)
                 .load(coin.image)
@@ -83,7 +84,8 @@ class CoinActivity : AppCompatActivity() {
                 bindingCoin.change24hPerc.setTextColor(Color.GREEN)
             }
             bindingCoin.change24h.text = usdFormatter.format(coin.priceChange24h)
-            bindingCoin.change24hPerc.text = percentFormatter.format(coin.priceChangePercentage24h/100)
+            bindingCoin.change24hPerc.text =
+                percentFormatter.format(coin.priceChangePercentage24h / 100)
 
             bindingCoin.high24h.text = usdFormatter.format(coin.high24h)
             bindingCoin.low24h.text = usdFormatter.format(coin.low24h)
@@ -118,13 +120,13 @@ class CoinActivity : AppCompatActivity() {
 
             val yValues: ArrayList<Float> = arrayListOf()
 
-            repeat (chartData.prices.size) {
+            repeat(chartData.prices.size) {
                 yValues.add(chartData.prices[it].last().toString().toFloat())
             }
 
             // Make and configure chart
 
-            repeat (coin.sparklineIn7d!!.price!!.size) {
+            repeat(coin.sparklineIn7d!!.price!!.size) {
                 entriesLine.add(Entry(it.toFloat(), yValues[it]))
             }
             val dataSetLine = LineDataSet(entriesLine, "")
@@ -136,7 +138,12 @@ class CoinActivity : AppCompatActivity() {
             chartLine.animateY(800)
             chartLine.setNoDataText("No data returned from API")
             chartLine.setNoDataTextColor(0xff000000.toInt())
-            chartLine.setNoDataTextTypeface(ResourcesCompat.getFont(this@CoinActivity, R.font.open_sans_light))
+            chartLine.setNoDataTextTypeface(
+                ResourcesCompat.getFont(
+                    this@CoinActivity,
+                    R.font.open_sans_light
+                )
+            )
             chartLine.dragDecelerationFrictionCoef = .95f
             chartLine.setDrawGridBackground(false)
             chartLine.xAxis.setDrawGridLines(false)
@@ -157,7 +164,6 @@ class CoinActivity : AppCompatActivity() {
             chartLine.description.isEnabled = false
 
             chartLine.invalidate()
-
 
 
         }

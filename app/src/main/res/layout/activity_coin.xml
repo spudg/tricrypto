@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".CoinActivity">
 
     <LinearLayout
@@ -74,392 +74,392 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:orientation="horizontal"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="30dp"
+                android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/logo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="75dp"
-        android:layout_height="75dp"/>
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/name"
-        app:layout_constraintLeft_toRightOf="@id/logo"
-        android:id="@+id/symbol"
-        android:layout_width="wrap_content"
-        android:layout_marginStart="15dp"
-        android:text="BTC"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:textSize="26sp"
-        android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/symbol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/open_sans_light"
+                    android:text="BTC"
+                    android:textColor="#212121"
+                    android:textSize="26sp"
+                    app:layout_constraintBottom_toTopOf="@id/name"
+                    app:layout_constraintLeft_toRightOf="@id/logo"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        app:layout_constraintTop_toBottomOf="@id/symbol"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/logo"
-        android:layout_marginStart="15dp"
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:text="Bitcoin"
-        android:textSize="20sp"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/open_sans_light"
+                    android:text="Bitcoin"
+                    android:textColor="#212121"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/logo"
+                    app:layout_constraintTop_toBottomOf="@id/symbol" />
 
-        <TextView
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/symbol"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/price"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="20dp"
-            android:layout_width="wrap_content"
-            android:text="$79,022.93"
-            android:fontFamily="@font/open_sans_light"
-            android:textColor="#212121"
-            android:textSize="24sp"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/open_sans_light"
+                    android:text="$79,022.93"
+                    android:textColor="#212121"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/symbol" />
 
-        <TextView
-            app:layout_constraintTop_toBottomOf="@id/price"
-            app:layout_constraintRight_toRightOf="parent"
-            android:id="@+id/change24hPerc"
-            android:layout_width="wrap_content"
-            android:text="1.29%"
-            android:fontFamily="@font/open_sans_light"
-            android:textColor="@android:color/holo_green_dark"
-            android:layout_marginEnd="10dp"
-            android:textSize="14sp"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/change24hPerc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/open_sans_light"
+                    android:text="1.29%"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:textSize="14sp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/price" />
 
-        <TextView
-            app:layout_constraintRight_toLeftOf="@id/change24hPerc"
-            app:layout_constraintTop_toBottomOf="@id/price"
-            android:id="@+id/change24h"
-            android:layout_width="wrap_content"
-            android:text="$1,928.33"
-            android:layout_marginEnd="5dp"
-            android:fontFamily="@font/open_sans_light"
-            android:textColor="@android:color/holo_green_dark"
-            android:textSize="14sp"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/change24h"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/open_sans_light"
+                    android:text="$1,928.33"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:textSize="14sp"
+                    app:layout_constraintRight_toLeftOf="@id/change24hPerc"
+                    app:layout_constraintTop_toBottomOf="@id/price" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart7Days"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="2dp"
-        android:layout_marginBottom="5dp" />
-
-    <LinearLayout
-        android:gravity="center_horizontal"
-        android:layout_marginBottom="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-    <TextView
-        android:id="@+id/btn7d"
-        android:layout_width="wrap_content"
-        android:foreground="?attr/selectableItemBackground"
-        android:fontFamily="@font/open_sans_light"
-        android:padding="10dp"
-        android:layout_height="wrap_content"
-        android:text="7d"/>
-
-    <TextView
-        android:id="@+id/btn1m"
-        android:layout_width="wrap_content"
-        android:foreground="?attr/selectableItemBackground"
-        android:padding="10dp"
-        android:fontFamily="@font/open_sans_light"
-        android:layout_height="wrap_content"
-        android:text="1m"/>
-
-    <TextView
-        android:id="@+id/btn1y"
-        android:layout_width="wrap_content"
-        android:foreground="?attr/selectableItemBackground"
-        android:padding="10dp"
-        android:fontFamily="@font/open_sans_light"
-        android:layout_height="wrap_content"
-        android:text="1y"/>
-
-    <TextView
-        android:id="@+id/btn5y"
-        android:layout_width="wrap_content"
-        android:fontFamily="@font/open_sans_light"
-        android:padding="10dp"
-        android:foreground="?attr/selectableItemBackground"
-        android:layout_height="wrap_content"
-        android:text="5y"/>
-
-    </LinearLayout>
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/chart7Days"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="5dp" />
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/btn7d"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_light"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="10dp"
+                    android:text="7d" />
+
+                <TextView
+                    android:id="@+id/btn1m"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_light"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="10dp"
+                    android:text="1m" />
+
+                <TextView
+                    android:id="@+id/btn1y"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_light"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="10dp"
+                    android:text="1y" />
+
+                <TextView
+                    android:id="@+id/btn5y"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_light"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="10dp"
+                    android:text="5y" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:layout_height="wrap_content" >
+                android:orientation="horizontal">
 
                 <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent">
+                    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="High (24h)"
-        android:layout_marginTop="10dp"
-        android:textSize="16sp"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="High (24h)"
+                        android:textColor="#212121"
+                        android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/high24h"
-        android:layout_width="wrap_content"
-        android:text="$241,231.22"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/high24h"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="$241,231.22"
+                        android:textColor="#212121" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="Low (24h)"
-        android:textSize="16sp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="Low (24h)"
+                        android:textColor="#212121"
+                        android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/low24h"
-        android:layout_width="wrap_content"
-        android:text="$231,441.09"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/low24h"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="$231,441.09"
+                        android:textColor="#212121" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="Volume"
-        android:textSize="16sp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="Volume"
+                        android:textColor="#212121"
+                        android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/volume"
-        android:layout_width="wrap_content"
-        android:text="$61,499,231,441.09"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/volume"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="$61,499,231,441.09"
+                        android:textColor="#212121" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="Market cap"
-        android:layout_marginTop="10dp"
-        android:textSize="16sp"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="Market cap"
+                        android:textColor="#212121"
+                        android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/mktCap"
-        android:layout_width="wrap_content"
-        android:text="$420,333,212,423"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/mktCap"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="$420,333,212,423"
+                        android:textColor="#212121" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="Fully diluted market cap"
-        android:layout_marginTop="10dp"
-        android:textSize="16sp"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="Fully diluted market cap"
+                        android:textColor="#212121"
+                        android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/dilMktCap"
-        android:layout_width="wrap_content"
-        android:text="$918,283,231"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/dilMktCap"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="$918,283,231"
+                        android:textColor="#212121" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="Market cap rank"
-        android:layout_marginTop="10dp"
-        android:textSize="16sp"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="Market cap rank"
+                        android:textColor="#212121"
+                        android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/mktCapRank"
-        android:layout_width="wrap_content"
-        android:text="13"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/mktCapRank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="13"
+                        android:textColor="#212121" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="0dp"
-                    android:gravity="center_horizontal"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:text="Circulating supply"
-                        android:fontFamily="@font/open_sans_light"
-                        android:textColor="#212121"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:textSize="16sp"
-                        android:layout_height="wrap_content" />
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="Circulating supply"
+                        android:textColor="#212121"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/circSupply"
                         android:layout_width="wrap_content"
-                        android:text="18,692,300"
+                        android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_light"
-                        android:textColor="#212121"
-                        android:layout_height="wrap_content" />
+                        android:text="18,692,300"
+                        android:textColor="#212121" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:text="Max supply"
-                        android:textSize="16sp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/open_sans_light"
+                        android:text="Max supply"
                         android:textColor="#212121"
-                        android:layout_height="wrap_content" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/maxSupply"
                         android:layout_width="wrap_content"
-                        android:text="21,000,000"
+                        android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_light"
+                        android:text="21,000,000"
+                        android:textColor="#212121" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="Total supply"
                         android:textColor="#212121"
-                        android:layout_height="wrap_content" />
+                        android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="Total supply"
-        android:textSize="16sp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/totalSupply"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="21,000,000"
+                        android:textColor="#212121" />
 
-    <TextView
-        android:id="@+id/totalSupply"
-        android:layout_width="wrap_content"
-        android:text="21,000,000"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="All-time high"
+                        android:textColor="#212121"
+                        android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="All-time high"
-        android:textSize="16sp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/ath"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="$9,941,231.22"
+                        android:textColor="#212121" />
 
-    <TextView
-        android:id="@+id/ath"
-        android:layout_width="wrap_content"
-        android:text="$9,941,231.22"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="Date of all-time high"
+                        android:textColor="#212121"
+                        android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="Date of all-time high"
-        android:textSize="16sp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/athDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="5 October 2024"
+                        android:textColor="#212121" />
 
-    <TextView
-        android:id="@+id/athDate"
-        android:layout_width="wrap_content"
-        android:text="5 October 2024"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="All-time low"
+                        android:textColor="#212121"
+                        android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="All-time low"
-        android:textSize="16sp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/atl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="$0.22"
+                        android:textColor="#212121" />
 
-    <TextView
-        android:id="@+id/atl"
-        android:layout_width="wrap_content"
-        android:text="$0.22"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="Date of all-time low"
+                        android:textColor="#212121"
+                        android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Date of all-time low"
-        android:textSize="16sp"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/atlDate"
-        android:layout_width="wrap_content"
-        android:text="2 October 2023"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/atlDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="2 October 2023"
+                        android:textColor="#212121" />
 
                 </LinearLayout>
 
-        </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
 

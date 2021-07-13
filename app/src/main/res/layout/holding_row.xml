@@ -13,33 +13,33 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:id="@+id/ticker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/open_sans_light"
+                    android:textColor="#212121"
+                    android:textSize="24sp"
+                    tools:text="1.44707 BTC" />
+
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingTop="10dp">
-
-                    <TextView
-                        android:id="@+id/ticker"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:fontFamily="@font/open_sans_light"
-                        android:textColor="#212121"
-                        android:textSize="24sp"
-                        tools:text="1.44707 BTC" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -51,9 +51,9 @@
                         android:id="@+id/note"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
                         android:fontFamily="@font/open_sans_light"
                         android:text="+ 45.4%"
-                        android:layout_marginEnd="10dp"
                         android:textColor="@android:color/holo_green_dark"
                         android:textSize="16sp"
                         android:textStyle="italic" />
@@ -73,9 +73,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="end"
                     android:orientation="horizontal"
                     android:paddingStart="20dp"
-                    android:gravity="end"
                     android:paddingEnd="20dp"
                     android:paddingBottom="10dp">
 
@@ -85,14 +85,14 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_light"
                         android:text="1 BTC = $507,325.33"
-                        android:textStyle="italic"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
+                        android:textSize="14sp"
+                        android:textStyle="italic" />
 
                 </LinearLayout>
 
             </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
