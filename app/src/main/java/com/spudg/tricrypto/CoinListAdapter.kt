@@ -57,6 +57,8 @@ class CoinListAdapter(private val context: Context, private val coins: ArrayList
 
             if (coin.priceChangePercentage24h < 0) {
                 binding.dailyChange.setTextColor(Color.RED)
+            } else {
+                binding.dailyChange.setTextColor(Color.GREEN)
             }
 
             binding.price.text = usdFormatter.format(coin.currentPrice)

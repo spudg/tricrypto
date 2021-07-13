@@ -94,6 +94,7 @@
             app:layout_constraintBottom_toBottomOf="@id/marketHeading"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:foreground="?attr/selectableItemBackground"
             android:layout_marginStart="10dp"
             android:background="@drawable/refresh"/>
 

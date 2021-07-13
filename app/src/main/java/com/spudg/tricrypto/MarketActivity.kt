@@ -26,7 +26,7 @@ class MarketActivity : AppCompatActivity() {
         val view = bindingMarket.root
         setContentView(view)
 
-        var timerSec = 30
+        var timerSec = 60
 
         val mainHandler = Handler(Looper.getMainLooper())
 
@@ -35,7 +35,6 @@ class MarketActivity : AppCompatActivity() {
                 if (timerSec > 0) {
                     timerSec -= 1
                 }
-                Log.e("test",timerSec.toString())
                 mainHandler.postDelayed(this, 1000)
             }
         })
@@ -46,7 +45,7 @@ class MarketActivity : AppCompatActivity() {
             } else {
                 setUpCoinList()
                 Toast.makeText(this, "Prices refreshed", Toast.LENGTH_SHORT).show()
-                timerSec = 30
+                timerSec = 60
             }
         }
 
