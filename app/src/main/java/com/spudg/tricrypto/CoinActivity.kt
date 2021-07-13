@@ -57,7 +57,7 @@ class CoinActivity : AppCompatActivity() {
         launch {
 
             val usdFormatter: NumberFormat = DecimalFormat("$#,##0.00")
-            val usdNoCFormatter: NumberFormat = DecimalFormat("£#,##0")
+            val usdNoCFormatter: NumberFormat = DecimalFormat("$#,##0")
 
             val coin = coinGecko.getCoinMarkets("usd",Globals.SELECTED_COIN,null,null,null,true).markets[0]
             val chartData: MarketChart = coinGecko.getCoinMarketChartById(Globals.SELECTED_COIN, "usd", days)

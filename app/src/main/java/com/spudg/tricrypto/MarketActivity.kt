@@ -3,7 +3,10 @@ package com.spudg.tricrypto
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.spudg.tricrypto.databinding.ActivityMarketBinding
 import drewcarlson.coingecko.CoinGeckoClient
@@ -23,7 +26,32 @@ class MarketActivity : AppCompatActivity() {
         val view = bindingMarket.root
         setContentView(view)
 
+        var timerSec = 30
+
+        val mainHandler = Handler(Looper.getMainLooper())
+
+        mainHandler.post(object : Runnable {
+            override fun run() {
+                if (timerSec > 0) {
+                    timerSec -= 1
+                }
+                Log.e("test",timerSec.toString())
+                mainHandler.postDelayed(this, 1000)
+            }
+        })
+
+        bindingMarket.btnRefresh.setOnClickListener {
+            if (timerSec > 0) {
+                Toast.makeText(this, "Please wait before refreshing again", Toast.LENGTH_SHORT).show()
+            } else {
+                setUpCoinList()
+                Toast.makeText(this, "Prices refreshed", Toast.LENGTH_SHORT).show()
+                timerSec = 30
+            }
+        }
+
         setUpCoinList()
+
     }
 
     private fun setUpCoinList() = runBlocking {
