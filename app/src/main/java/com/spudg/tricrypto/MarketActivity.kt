@@ -25,6 +25,12 @@ class MarketActivity : AppCompatActivity() {
         val view = bindingMarket.root
         setContentView(view)
 
+        bindingMarket.portfolioBtn.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         var timerSec = 60
 
         val mainHandler = Handler(Looper.getMainLooper())

@@ -1,5 +1,6 @@
 package com.spudg.tricrypto
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +30,18 @@ class CoinActivity : AppCompatActivity() {
         bindingCoin = ActivityCoinBinding.inflate(layoutInflater)
         val view = bindingCoin.root
         setContentView(view)
+
+        bindingCoin.portfolioBtn.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        bindingCoin.marketBtn.setOnClickListener {
+            val intent = Intent(this, MarketActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         setUpCoinInfo(7)
 

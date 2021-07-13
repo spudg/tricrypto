@@ -23,7 +23,9 @@ class MainActivity : AppCompatActivity() {
         bindingMain.marketBtn.setOnClickListener {
             val intent = Intent(this, MarketActivity::class.java)
             startActivity(intent)
+            finish()
         }
+
     }
 
     private fun getPrice(coin: String) = runBlocking {
