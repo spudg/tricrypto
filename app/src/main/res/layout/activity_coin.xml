@@ -171,12 +171,15 @@
         android:layout_marginBottom="5dp" />
 
     <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" >
 
     <TextView
         android:id="@+id/btn7d"
         android:layout_width="wrap_content"
+        android:foreground="?attr/selectableItemBackground"
         android:fontFamily="@font/open_sans_light"
         android:padding="10dp"
         android:layout_height="wrap_content"
@@ -185,6 +188,7 @@
     <TextView
         android:id="@+id/btn1m"
         android:layout_width="wrap_content"
+        android:foreground="?attr/selectableItemBackground"
         android:padding="10dp"
         android:fontFamily="@font/open_sans_light"
         android:layout_height="wrap_content"
@@ -193,6 +197,7 @@
     <TextView
         android:id="@+id/btn1y"
         android:layout_width="wrap_content"
+        android:foreground="?attr/selectableItemBackground"
         android:padding="10dp"
         android:fontFamily="@font/open_sans_light"
         android:layout_height="wrap_content"
@@ -203,205 +208,258 @@
         android:layout_width="wrap_content"
         android:fontFamily="@font/open_sans_light"
         android:padding="10dp"
+        android:foreground="?attr/selectableItemBackground"
         android:layout_height="wrap_content"
         android:text="5y"/>
 
     </LinearLayout>
 
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="20dp"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="High (24h)"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/high24h"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="$241,231.22"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="Low (24h)"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/low24h"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="$231,441.09"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="Volume"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/volume"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="$61,499,231,441.09"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="Market cap"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/mktCap"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="$420,333,212,423"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="Fully diluted market cap"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/dilMktCap"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="$918,283,231"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="Market cap rank"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/mktCapRank"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="13"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:text="Circulating supply"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:gravity="center_horizontal"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Circulating supply"
+                        android:fontFamily="@font/open_sans_light"
+                        android:textColor="#212121"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16sp"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/circSupply"
+                        android:layout_width="wrap_content"
+                        android:text="18,692,300"
+                        android:fontFamily="@font/open_sans_light"
+                        android:textColor="#212121"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Max supply"
+                        android:textSize="16sp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/open_sans_light"
+                        android:textColor="#212121"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/maxSupply"
+                        android:layout_width="wrap_content"
+                        android:text="21,000,000"
+                        android:fontFamily="@font/open_sans_light"
+                        android:textColor="#212121"
+                        android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/circSupply"
-        android:layout_width="match_parent"
-        android:text="18,692,300"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:text="Max supply"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/maxSupply"
-        android:layout_width="match_parent"
-        android:text="21,000,000"
-        android:fontFamily="@font/open_sans_light"
-        android:textColor="#212121"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="Total supply"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/totalSupply"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="21,000,000"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="All-time high"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/ath"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="$9,941,231.22"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="Date of all-time high"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/athDate"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="5 October 2024"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="All-time low"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/atl"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="$0.22"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Date of all-time low"
+        android:textSize="16sp"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/atlDate"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="2 October 2023"
         android:fontFamily="@font/open_sans_light"
         android:textColor="#212121"
         android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+        </LinearLayout>
 
         </LinearLayout>
 
