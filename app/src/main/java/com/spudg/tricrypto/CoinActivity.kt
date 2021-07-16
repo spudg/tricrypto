@@ -43,6 +43,10 @@ class CoinActivity : AppCompatActivity() {
             finish()
         }
 
+        bindingCoin.btnBuy.setOnClickListener {
+
+        }
+
         setUpCoinInfo(7)
 
         bindingCoin.btn7d.setOnClickListener {
