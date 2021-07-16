@@ -1,14 +1,20 @@
 package com.spudg.tricrypto
 
+import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.bumptech.glide.Glide
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.*
 import com.spudg.tricrypto.databinding.ActivityCoinBinding
+import com.spudg.tricrypto.databinding.DialogBuyBinding
+import com.spudg.tricrypto.databinding.DialogSellBinding
 import drewcarlson.coingecko.CoinGeckoClient
 import drewcarlson.coingecko.models.coins.MarketChart
 import io.ktor.client.engine.android.*
@@ -20,6 +26,8 @@ import java.text.NumberFormat
 class CoinActivity : AppCompatActivity() {
 
     private lateinit var bindingCoin: ActivityCoinBinding
+    private lateinit var bindingBuyDialog: DialogBuyBinding
+    private lateinit var bindingSellDialog: DialogSellBinding
 
     private val coinGecko = CoinGeckoClient.create()
 
@@ -44,7 +52,51 @@ class CoinActivity : AppCompatActivity() {
         }
 
         bindingCoin.btnBuy.setOnClickListener {
+            val buyDialog = Dialog(this, R.style.Theme_Dialog)
+            buyDialog.setCancelable(false)
+            bindingBuyDialog = DialogBuyBinding.inflate(layoutInflater)
+            val view = bindingBuyDialog.root
+            buyDialog.setContentView(view)
+            buyDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
+            bindingBuyDialog.tvBuy.setOnClickListener {
+                val handler = HoldingHandler(this, null)
+                val existingCost = handler.getCost(Globals.SELECTED_COIN_SYM).toFloat()
+                val newCost = bindingBuyDialog.etAmount.text.toString().toFloat()
+                handler.buy(HoldingModel(Globals.SELECTED_COIN_SYM, (existingCost+newCost).toString(), "69"))
+                Toast.makeText(this, "Crypto bought.", Toast.LENGTH_SHORT).show()
+                buyDialog.dismiss()
+            }
+
+            bindingBuyDialog.tvCancel.setOnClickListener {
+                buyDialog.dismiss()
+            }
+
+            buyDialog.show()
+        }
+
+        bindingCoin.btnSell.setOnClickListener {
+            val sellDialog = Dialog(this, R.style.Theme_Dialog)
+            sellDialog.setCancelable(false)
+            bindingSellDialog = DialogSellBinding.inflate(layoutInflater)
+            val view = bindingSellDialog.root
+            sellDialog.setContentView(view)
+            sellDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+            bindingSellDialog.tvSell.setOnClickListener {
+                val handler = HoldingHandler(this, null)
+                val existingCost = handler.getCost(Globals.SELECTED_COIN_SYM).toFloat()
+                val soldCost = bindingSellDialog.etAmount.text.toString().toFloat()
+                handler.sell(HoldingModel(Globals.SELECTED_COIN_SYM, (existingCost+soldCost).toString(), "69"))
+                Toast.makeText(this, "Crypto sold.", Toast.LENGTH_SHORT).show()
+                sellDialog.dismiss()
+            }
+
+            bindingSellDialog.tvCancel.setOnClickListener {
+                sellDialog.dismiss()
+            }
+
+            sellDialog.show()
         }
 
         setUpCoinInfo(7)
@@ -77,14 +129,14 @@ class CoinActivity : AppCompatActivity() {
 
             val coin = coinGecko.getCoinMarkets(
                 "usd",
-                Globals.SELECTED_COIN,
+                Globals.SELECTED_COIN_ID,
                 null,
                 null,
                 null,
                 true
             ).markets[0]
             val chartData: MarketChart =
-                coinGecko.getCoinMarketChartById(Globals.SELECTED_COIN, "usd", days)
+                coinGecko.getCoinMarketChartById(Globals.SELECTED_COIN_ID, "usd", days)
 
             Glide.with(applicationContext)
                 .load(coin.image)

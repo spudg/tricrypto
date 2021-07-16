@@ -34,7 +34,7 @@ class CoinListAdapter(private val context: Context, private val coins: ArrayList
 
             binding.coinRow.setOnClickListener {
                 if (context is MarketActivity) {
-                    context.selectCoin(coin.id.toString())
+                    context.selectCoin(coin.id.toString(), coin.symbol.toString())
                 }
             }
 

@@ -77,8 +77,9 @@ class MarketActivity : AppCompatActivity() {
         }
     }
 
-    fun selectCoin(coin: String) {
-        Globals.SELECTED_COIN = coin
+    fun selectCoin(id: String, symbol: String) {
+        Globals.SELECTED_COIN_ID = id
+        Globals.SELECTED_COIN_SYM = symbol
         val intent = Intent(this, CoinActivity::class.java)
         startActivity(intent)
     }
