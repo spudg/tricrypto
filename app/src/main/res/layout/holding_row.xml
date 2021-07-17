@@ -3,7 +3,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/holdingRow"
+    android:background="@drawable/coin_row_background"
+    android:elevation="20dp"
+    android:layout_margin="10dp"
     android:layout_width="match_parent"
+    android:padding="10dp"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
@@ -11,41 +15,52 @@
         android:id="@+id/holdingInnerRow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="10dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/amountAndSymbol"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="10dp">
+                android:fontFamily="@font/open_sans_light"
+                android:textColor="#212121"
+                android:textSize="18sp"
+                tools:text="1.44707 BTC" />
 
-                <TextView
-                    android:id="@+id/amountAndSymbol"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:fontFamily="@font/open_sans_light"
-                    android:textColor="#212121"
-                    android:textSize="24sp"
-                    tools:text="1.44707 BTC" />
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_light"
+                android:text="1 BTC = $507,325.33"
+                android:textSize="14sp"
+                android:textStyle="italic" />
 
-            </LinearLayout>
+
+
+        </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="end"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingTop="10dp">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/percentageChange"
@@ -55,7 +70,7 @@
                         android:fontFamily="@font/open_sans_light"
                         android:text="+ 45.4%"
                         android:textColor="@android:color/holo_green_dark"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="italic" />
 
                     <TextView
@@ -65,7 +80,7 @@
                         android:layout_marginEnd="10dp"
                         android:fontFamily="@font/open_sans_light"
                         android:textColor="#212121"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         tools:text="$734,135.26" />
 
                 </LinearLayout>
@@ -76,15 +91,14 @@
                     android:gravity="end"
                     android:orientation="horizontal"
                     android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="10dp">
+                    android:paddingEnd="10dp" >
 
                     <TextView
-                        android:id="@+id/price"
+                        android:id="@+id/cost"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="1 BTC = $507,325.33"
+                        android:text="Cost = $3,982"
                         android:textSize="14sp"
                         android:textStyle="italic" />
 
@@ -93,17 +107,5 @@
             </LinearLayout>
 
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/cost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/open_sans_light"
-            android:text="Cost: $3,982"
-            android:textSize="14sp"
-            android:textStyle="italic" />
-
-    </LinearLayout>
-
 
 </LinearLayout>

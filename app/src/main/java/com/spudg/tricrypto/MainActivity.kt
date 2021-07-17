@@ -2,21 +2,23 @@ package com.spudg.tricrypto
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.spudg.tricrypto.databinding.ActivityMainBinding
 import drewcarlson.coingecko.CoinGeckoClient
+import drewcarlson.coingecko.models.coins.CoinMarkets
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.text.DecimalFormat
+import java.text.NumberFormat
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var bindingMain: ActivityMainBinding
 
     private val coinGecko = CoinGeckoClient.create()
-
-    private var price = "0"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
+        setTotalPortfolioValue()
         setUpHoldingList()
 
     }
@@ -52,13 +55,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun getPrice(id: String) = runBlocking {
-        launch {
-            price = coinGecko.getPrice(id, "usd").values.first().toString()
-        }
-        return@runBlocking price
-    }
-
     fun getAmount(symbol: String): String {
         val db = HoldingHandler(this, null)
         return db.getAmount(symbol)
@@ -67,6 +63,22 @@ class MainActivity : AppCompatActivity() {
     fun getCost(symbol: String): String {
         val db = HoldingHandler(this, null)
         return db.getCost(symbol)
+    }
+
+    private fun setTotalPortfolioValue() = runBlocking {
+        launch {
+
+            val db = HoldingHandler(this@MainActivity, null)
+            val holdings = db.getAllHoldings()
+            var runningTotal = 0.00
+            for (holding in holdings) {
+                runningTotal += holding.amount.toFloat() * coinGecko.getCoinMarkets("usd", holding.id).markets[0].currentPrice.toString().toFloat()
+            }
+
+            val usdFormatter: NumberFormat = DecimalFormat("$#,##0.00")
+            bindingMain.portfolioValue.text = "Total value: " + usdFormatter.format(runningTotal)
+
+        }
     }
 
 
