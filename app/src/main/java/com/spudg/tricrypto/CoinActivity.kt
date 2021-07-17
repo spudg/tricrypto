@@ -33,6 +33,8 @@ class CoinActivity : AppCompatActivity() {
 
     private var entriesLine: ArrayList<Entry> = ArrayList()
 
+    var coinCurrentPrice = "0"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindingCoin = ActivityCoinBinding.inflate(layoutInflater)
@@ -63,7 +65,7 @@ class CoinActivity : AppCompatActivity() {
                 val handler = HoldingHandler(this, null)
                 val existingCost = handler.getCost(Globals.SELECTED_COIN_SYM).toFloat()
                 val newCost = bindingBuyDialog.etAmount.text.toString().toFloat()
-                handler.buy(HoldingModel(Globals.SELECTED_COIN_SYM, (existingCost+newCost).toString(), "69"))
+                handler.buy(HoldingModel(Globals.SELECTED_COIN_SYM, Globals.SELECTED_COIN_ID, (existingCost+newCost).toString(), (handler.getAmount(Globals.SELECTED_COIN_SYM).toFloat()+(newCost/coinCurrentPrice.toFloat())).toString()))
                 Toast.makeText(this, "Crypto bought.", Toast.LENGTH_SHORT).show()
                 buyDialog.dismiss()
             }
@@ -87,9 +89,14 @@ class CoinActivity : AppCompatActivity() {
                 val handler = HoldingHandler(this, null)
                 val existingCost = handler.getCost(Globals.SELECTED_COIN_SYM).toFloat()
                 val soldCost = bindingSellDialog.etAmount.text.toString().toFloat()
-                handler.sell(HoldingModel(Globals.SELECTED_COIN_SYM, (existingCost+soldCost).toString(), "69"))
-                Toast.makeText(this, "Crypto sold.", Toast.LENGTH_SHORT).show()
-                sellDialog.dismiss()
+                if (existingCost >= soldCost) {
+                    handler.sell(HoldingModel(Globals.SELECTED_COIN_SYM, Globals.SELECTED_COIN_ID, (existingCost-soldCost).toString(), (handler.getAmount(Globals.SELECTED_COIN_SYM).toFloat()-(soldCost/coinCurrentPrice.toFloat())).toString()))
+                    Toast.makeText(this, "Crypto sold.", Toast.LENGTH_SHORT).show()
+                    sellDialog.dismiss()
+                } else {
+                    Toast.makeText(this, "You don't have enough to sell this amount.", Toast.LENGTH_SHORT).show()
+                }
+
             }
 
             bindingSellDialog.tvCancel.setOnClickListener {
@@ -137,6 +144,8 @@ class CoinActivity : AppCompatActivity() {
             ).markets[0]
             val chartData: MarketChart =
                 coinGecko.getCoinMarketChartById(Globals.SELECTED_COIN_ID, "usd", days)
+
+            coinCurrentPrice = coin.currentPrice.toString()
 
             Glide.with(applicationContext)
                 .load(coin.image)

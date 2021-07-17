@@ -125,13 +125,13 @@
             app:layout_constraintVertical_weight="4">
 
             <LinearLayout
-                android:id="@+id/llTransactions"
+                android:id="@+id/llHoldings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvTransactions"
+                    android:id="@+id/rvHoldings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clipToPadding="false"
