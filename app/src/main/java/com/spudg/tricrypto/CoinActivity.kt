@@ -61,6 +61,8 @@ class CoinActivity : AppCompatActivity() {
             buyDialog.setContentView(view)
             buyDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
+            bindingBuyDialog.ofSymbol.text = "of " + Globals.SELECTED_COIN_SYM.uppercase()
+
             bindingBuyDialog.tvBuy.setOnClickListener {
                 val handler = HoldingHandler(this, null)
                 val existingCost = handler.getCost(Globals.SELECTED_COIN_SYM).toFloat()
@@ -84,6 +86,8 @@ class CoinActivity : AppCompatActivity() {
             val view = bindingSellDialog.root
             sellDialog.setContentView(view)
             sellDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+            bindingSellDialog.ofSymbol.text = "of " + Globals.SELECTED_COIN_SYM.uppercase()
 
             bindingSellDialog.tvSell.setOnClickListener {
                 val handler = HoldingHandler(this, null)

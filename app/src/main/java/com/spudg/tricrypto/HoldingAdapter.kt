@@ -45,6 +45,12 @@ class HoldingAdapter(private val context: Context, private val holdings: ArrayLi
 
                 val holding = holdings[position]
 
+                binding.holdingInnerRow.setOnClickListener {
+                    if (context is MainActivity) {
+                        context.selectCoin(holding.id, holding.symbol)
+                    }
+                }
+
                 val usdFormatter: NumberFormat = DecimalFormat("$#,###.00")
                 val percentFormatter: NumberFormat = DecimalFormat("#,##0.00%")
                 val amountFormatter: NumberFormat = DecimalFormat("#,###.####")

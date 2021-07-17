@@ -16,37 +16,27 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/open_sans_light"
-        android:text="Buy"
+        android:text="Buy $"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etAmountLayout"
-            android:layout_marginTop="20dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <EditText
+            android:id="@+id/etAmount"
+            android:layout_marginTop="5dp"
             android:layout_width="100dp"
+            android:inputType="numberDecimal"
             android:layout_height="wrap_content"
-            android:layout_weight="8">
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/etAmount"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:fontFamily="@font/open_sans_light"
-                android:hint="Amount"
-                android:inputType="numberDecimal" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+            android:fontFamily="@font/open_sans_light"
+            android:hint="amount"/>
 
     <TextView
-        android:id="@+id/worthOfCrypto"
+        android:id="@+id/ofSymbol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/open_sans_light"
-        android:text="worth of Bitcoin"
+        android:text="of BTC"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
 
