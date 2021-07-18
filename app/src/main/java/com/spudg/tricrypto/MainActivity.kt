@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
             bindingMain.noHoldings.visibility = View.GONE
             val manager = LinearLayoutManager(this)
             bindingMain.rvHoldings.layoutManager = manager
-            val holdingAdapter = HoldingAdapter(this, db.getAllHoldings())
+            val holdingAdapter = HoldingAdapter(this, holdings)
             bindingMain.rvHoldings.adapter = holdingAdapter
         } else {
             bindingMain.rvHoldings.visibility = View.GONE

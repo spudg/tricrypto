@@ -11,6 +11,7 @@ import com.spudg.tricrypto.databinding.CoinRowBinding
 import com.spudg.tricrypto.databinding.HoldingRowBinding
 import drewcarlson.coingecko.CoinGeckoClient
 import drewcarlson.coingecko.models.coins.CoinMarkets
+import drewcarlson.coingecko.models.coins.CoinMarketsList
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.text.DecimalFormat
@@ -21,8 +22,14 @@ class HoldingAdapter(private val context: Context, private val holdings: ArrayLi
     RecyclerView.Adapter<HoldingAdapter.HoldingViewHolder>() {
 
     private val coinGecko = CoinGeckoClient.create()
+    private lateinit var coins: CoinMarketsList
 
     inner class HoldingViewHolder(val binding: HoldingRowBinding) : RecyclerView.ViewHolder(binding.root)
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        setDataFromAPI()
+        super.onAttachedToRecyclerView(recyclerView)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HoldingViewHolder {
         val binding = HoldingRowBinding
@@ -31,55 +38,66 @@ class HoldingAdapter(private val context: Context, private val holdings: ArrayLi
     }
 
     override fun onBindViewHolder(holder: HoldingViewHolder, position: Int) {
-        setUpRow(holder)
+
+        with(holder) {
+
+            val holding = holdings[position]
+
+            binding.holdingInnerRow.setOnClickListener {
+                if (context is MainActivity) {
+                    context.selectCoin(holding.id, holding.symbol)
+                }
+            }
+
+            val usdFormatter: NumberFormat = DecimalFormat("$#,###.00")
+            val percentFormatter: NumberFormat = DecimalFormat("#,##0.00%")
+            val amountFormatter: NumberFormat = DecimalFormat("#,###.####")
+
+            var price = "0"
+
+            if (context is MainActivity) {
+
+                for (item in coins.markets) {
+                    if (item.id == holding.id) {
+                        price = item.currentPrice.toString()
+                        Glide.with(context)
+                            .load(item.image)
+                            .into(binding.logo)
+                    }
+                }
+
+                val amount = context.getAmount(holding.symbol)
+                val cost = context.getCost(holding.symbol)
+                val value = (price.toFloat() * amount.toFloat()).toString()
+                val symbol = holding.symbol.uppercase()
+                val percentageChange = (value.toFloat() - cost.toFloat())/cost.toFloat()
+
+                binding.amountAndSymbol.text = "${amountFormatter.format(amount.toFloat())} $symbol"
+                binding.cost.text = "Cost = ${usdFormatter.format(cost.toFloat())}"
+                binding.price.text = "1 " + symbol + " = " + usdFormatter.format(price.toFloat())
+                binding.value.text = usdFormatter.format(value.toFloat())
+                binding.percentageChange.text = percentFormatter.format(percentageChange)
+
+                if (percentageChange < 0) {
+                    binding.percentageChange.setTextColor(Color.RED)
+                } else {
+                    binding.percentageChange.setTextColor(Color.GREEN)
+                }
+
+            }
+
+        }
     }
 
     override fun getItemCount(): Int {
         return holdings.size
     }
 
-    private fun setUpRow(holder: HoldingViewHolder) = runBlocking {
+    private fun setDataFromAPI() = runBlocking {
         launch {
-
-            with(holder) {
-
-                val holding = holdings[position]
-
-                binding.holdingInnerRow.setOnClickListener {
-                    if (context is MainActivity) {
-                        context.selectCoin(holding.id, holding.symbol)
-                    }
-                }
-
-                val usdFormatter: NumberFormat = DecimalFormat("$#,###.00")
-                val percentFormatter: NumberFormat = DecimalFormat("#,##0.00%")
-                val amountFormatter: NumberFormat = DecimalFormat("#,###.####")
-
-                if (context is MainActivity) {
-                    val price = coinGecko.getCoinMarkets("usd", holding.id).markets[0].currentPrice.toString()
-                    val amount = context.getAmount(holding.symbol)
-                    val cost = context.getCost(holding.symbol)
-                    val value = (price.toFloat() * amount.toFloat()).toString()
-                    val symbol = holding.symbol.uppercase()
-                    val percentageChange = (value.toFloat() - cost.toFloat())/cost.toFloat()
-                    Glide.with(context)
-                        .load(coinGecko.getCoinMarkets("usd", holding.id).markets[0].image)
-                        .into(binding.logo)
-                    binding.amountAndSymbol.text = "${amountFormatter.format(amount.toFloat())} $symbol"
-                    binding.cost.text = "Cost = ${usdFormatter.format(cost.toFloat())}"
-                    binding.price.text = "1 " + symbol + " = " + usdFormatter.format(price.toFloat())
-                    binding.value.text = usdFormatter.format(value.toFloat())
-                    binding.percentageChange.text = percentFormatter.format(percentageChange)
-                    if (percentageChange < 0) {
-                        binding.percentageChange.setTextColor(Color.RED)
-                    } else {
-                        binding.percentageChange.setTextColor(Color.GREEN)
-                    }
-                }
-
-            }
-
+            coins = coinGecko.getCoinMarkets("usd")
         }
+
     }
 
 }
