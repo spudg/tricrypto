@@ -64,12 +64,18 @@ class CoinActivity : AppCompatActivity() {
             bindingBuyDialog.ofSymbol.text = "of " + Globals.SELECTED_COIN_SYM.uppercase()
 
             bindingBuyDialog.tvBuy.setOnClickListener {
-                val handler = HoldingHandler(this, null)
-                val existingCost = handler.getCost(Globals.SELECTED_COIN_SYM).toFloat()
+                val dbCrypto = HoldingHandler(this, null)
+                val dbCash = CashHandler(this, null)
+                val existingCost = dbCrypto.getCost(Globals.SELECTED_COIN_SYM).toFloat()
                 val newCost = bindingBuyDialog.etAmount.text.toString().toFloat()
-                handler.buy(HoldingModel(Globals.SELECTED_COIN_SYM, Globals.SELECTED_COIN_ID, (existingCost+newCost).toString(), (handler.getAmount(Globals.SELECTED_COIN_SYM).toFloat()+(newCost/coinCurrentPrice.toFloat())).toString()))
-                Toast.makeText(this, "Crypto bought.", Toast.LENGTH_SHORT).show()
-                buyDialog.dismiss()
+                if (dbCash.getCashBal().toFloat() >= newCost) {
+                    dbCrypto.buy(HoldingModel(Globals.SELECTED_COIN_SYM, Globals.SELECTED_COIN_ID, (existingCost+newCost).toString(), (dbCrypto.getAmount(Globals.SELECTED_COIN_SYM).toFloat()+(newCost/coinCurrentPrice.toFloat())).toString()))
+                    dbCash.takeCash(newCost.toString())
+                    Toast.makeText(this, "Crypto bought.", Toast.LENGTH_SHORT).show()
+                    buyDialog.dismiss()
+                } else {
+                    Toast.makeText(this, "You don't have enough cash.", Toast.LENGTH_SHORT).show()
+                }
             }
 
             bindingBuyDialog.tvCancel.setOnClickListener {
@@ -90,11 +96,15 @@ class CoinActivity : AppCompatActivity() {
             bindingSellDialog.ofSymbol.text = "of " + Globals.SELECTED_COIN_SYM.uppercase()
 
             bindingSellDialog.tvSell.setOnClickListener {
-                val handler = HoldingHandler(this, null)
-                val existingCost = handler.getCost(Globals.SELECTED_COIN_SYM).toFloat()
+                val dbCrypto = HoldingHandler(this, null)
+                val dbCash = CashHandler(this, null)
+                val existingCost = dbCrypto.getCost(Globals.SELECTED_COIN_SYM).toFloat()
                 val soldCost = bindingSellDialog.etAmount.text.toString().toFloat()
+                val currentAmount = dbCrypto.getAmount(Globals.SELECTED_COIN_SYM).toFloat()
+                val currentPrice = coinCurrentPrice.toFloat()
                 if (existingCost >= soldCost) {
-                    handler.sell(HoldingModel(Globals.SELECTED_COIN_SYM, Globals.SELECTED_COIN_ID, (existingCost-soldCost).toString(), (handler.getAmount(Globals.SELECTED_COIN_SYM).toFloat()-(soldCost/coinCurrentPrice.toFloat())).toString()))
+                    dbCrypto.sell(HoldingModel(Globals.SELECTED_COIN_SYM, Globals.SELECTED_COIN_ID, ((1-(soldCost/existingCost))*existingCost).toString(), ((1-(soldCost/(currentAmount*currentPrice)))*currentAmount).toString()))
+                    dbCash.addCash(soldCost.toString())
                     Toast.makeText(this, "Crypto sold.", Toast.LENGTH_SHORT).show()
                     sellDialog.dismiss()
                 } else {

@@ -56,23 +56,24 @@ class CashHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         val values = ContentValues()
         values.put(KEY_AMOUNT, "500000")
         db.insert(TABLE_CASH, null, values)
-
     }
 
     fun addCash(amount: String) {
-        val db = this.writableDatabase
         val currentBalance = this.getCashBal().toFloat()
+        val db = this.writableDatabase
         val values = ContentValues()
         values.put(KEY_AMOUNT, (currentBalance + amount.toFloat()).toString())
         db.update(TABLE_CASH, values, "$KEY_AMOUNT=amount", null)
+        db.close()
     }
 
     fun takeCash(amount: String) {
-        val db = this.writableDatabase
         val currentBalance = this.getCashBal().toFloat()
+        val db = this.writableDatabase
         val values = ContentValues()
         values.put(KEY_AMOUNT, (currentBalance - amount.toFloat()).toString())
         db.update(TABLE_CASH, values, "$KEY_AMOUNT=amount", null)
+        db.close()
     }
 
 
