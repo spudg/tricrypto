@@ -32,6 +32,11 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
+        val dbCash = CashHandler(this, null)
+        if (dbCash.getCashBal() == "-1") {
+            dbCash.setInitial()
+        }
+
         setTotalPortfolioValue()
         setUpHoldingList()
 
@@ -68,15 +73,18 @@ class MainActivity : AppCompatActivity() {
     private fun setTotalPortfolioValue() = runBlocking {
         launch {
 
-            val db = HoldingHandler(this@MainActivity, null)
-            val holdings = db.getAllHoldings()
+            val dbCrypto = HoldingHandler(this@MainActivity, null)
+            val dbCash = CashHandler(this@MainActivity, null)
+            val holdings = dbCrypto.getAllHoldings()
             var runningTotal = 0.00
             for (holding in holdings) {
                 runningTotal += holding.amount.toFloat() * coinGecko.getCoinMarkets("usd", holding.id).markets[0].currentPrice.toString().toFloat()
             }
 
             val usdFormatter: NumberFormat = DecimalFormat("$#,##0.00")
-            bindingMain.portfolioValue.text = "Total value: " + usdFormatter.format(runningTotal)
+            bindingMain.portfolioHeading.text = "Portfolio - " + usdFormatter.format(runningTotal + dbCash.getCashBal().toFloat())
+            bindingMain.cryptoValue.text = "Crypto - " + usdFormatter.format(runningTotal)
+            bindingMain.cashValue.text = "Cash - " + usdFormatter.format(dbCash.getCashBal().toFloat())
 
         }
     }

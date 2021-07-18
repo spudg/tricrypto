@@ -87,7 +87,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/open_sans_light"
-                android:text="Portfolio"
+                android:text="Portfolio - $512,242.66"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -95,7 +95,20 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/portfolioValue"
+                android:id="@+id/cryptoValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_light"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Crypto value: $512,326.33"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@id/cashValue"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/portfolioHeading" />
+
+            <TextView
+                android:id="@+id/cashValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -103,11 +116,11 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
                 android:fontFamily="@font/open_sans_light"
-                android:text="Value: $512,326.33"
-                android:textSize="18sp"
+                android:text="Cash value: $6.33"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/portfolioHeading" />
+                app:layout_constraintTop_toBottomOf="@id/cryptoValue" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
