@@ -103,7 +103,7 @@ class CoinActivity : AppCompatActivity() {
                 val currentAmount = dbCrypto.getAmount(Globals.SELECTED_COIN_SYM).toFloat()
                 val currentPrice = coinCurrentPrice.toFloat()
                 if (existingCost >= soldCost) {
-                    dbCrypto.sell(HoldingModel(Globals.SELECTED_COIN_SYM, Globals.SELECTED_COIN_ID, ((1-(soldCost/existingCost))*existingCost).toString(), ((1-(soldCost/(currentAmount*currentPrice)))*currentAmount).toString()))
+                    dbCrypto.sell(HoldingModel(Globals.SELECTED_COIN_SYM, Globals.SELECTED_COIN_ID, ((1-(soldCost/(currentAmount*currentPrice)))*existingCost).toString(), ((1-(soldCost/(currentAmount*currentPrice)))*currentAmount).toString()))
                     dbCash.addCash(soldCost.toString())
                     Toast.makeText(this, "Crypto sold.", Toast.LENGTH_SHORT).show()
                     sellDialog.dismiss()
