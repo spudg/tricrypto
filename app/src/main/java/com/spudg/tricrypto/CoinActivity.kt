@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
@@ -41,6 +42,12 @@ class CoinActivity : AppCompatActivity() {
         val view = bindingCoin.root
         setContentView(view)
 
+        setUpCoinInfo(7)
+        val dbHolding = HoldingHandler(this, null)
+        val usdFormatter: NumberFormat = DecimalFormat("$#,##0.00")
+        val amountFormatter: NumberFormat = DecimalFormat("#,###.####")
+        val percentFormatter: NumberFormat = DecimalFormat("#,##0.00%")
+
         bindingCoin.portfolioBtn.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -51,6 +58,70 @@ class CoinActivity : AppCompatActivity() {
             val intent = Intent(this, MarketActivity::class.java)
             startActivity(intent)
             finish()
+        }
+
+        if (dbHolding.getAmount(Globals.SELECTED_COIN_SYM).toFloat() > 0F) {
+
+            val value = dbHolding.getAmount(Globals.SELECTED_COIN_SYM).toFloat() * coinCurrentPrice.toFloat()
+            val cost = dbHolding.getCost(Globals.SELECTED_COIN_SYM).toFloat()
+            val amount = dbHolding.getAmount(Globals.SELECTED_COIN_SYM).toFloat()
+            val pReturn = (value-cost)/cost
+
+            bindingCoin.llHoldingInfo.visibility = View.VISIBLE
+            bindingCoin.infoHeader.text = "Your " + Globals.SELECTED_COIN_SYM.uppercase() + " holdings"
+            bindingCoin.value.text = "Value: " + usdFormatter.format(value)
+            bindingCoin.pReturn.text = percentFormatter.format(pReturn)
+            if (pReturn < 0) {
+                bindingCoin.pReturn.setTextColor(Color.RED)
+            } else {
+                bindingCoin.pReturn.setTextColor(Color.GREEN)
+            }
+            bindingCoin.amount.text = "Amount: " + amountFormatter.format(amount)
+            bindingCoin.cost.text = "Cost: " + usdFormatter.format(cost)
+
+
+
+            bindingCoin.btnSell.visibility = View.VISIBLE
+
+            bindingCoin.btnSell.setOnClickListener {
+                val sellDialog = Dialog(this, R.style.Theme_Dialog)
+                sellDialog.setCancelable(false)
+                bindingSellDialog = DialogSellBinding.inflate(layoutInflater)
+                val view = bindingSellDialog.root
+                sellDialog.setContentView(view)
+                sellDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+                bindingSellDialog.ofSymbol.text = "of " + Globals.SELECTED_COIN_SYM.uppercase()
+
+                bindingSellDialog.tvSell.setOnClickListener {
+                    val dbCrypto = HoldingHandler(this, null)
+                    val dbCash = CashHandler(this, null)
+                    val existingCost = dbCrypto.getCost(Globals.SELECTED_COIN_SYM).toFloat()
+                    val soldCost = bindingSellDialog.etAmount.text.toString().toFloat()
+                    val currentAmount = dbCrypto.getAmount(Globals.SELECTED_COIN_SYM).toFloat()
+                    val currentPrice = coinCurrentPrice.toFloat()
+                    if (existingCost >= soldCost) {
+                        dbCrypto.sell(HoldingModel(Globals.SELECTED_COIN_SYM, Globals.SELECTED_COIN_ID, ((1-(soldCost/(currentAmount*currentPrice)))*existingCost).toString(), ((1-(soldCost/(currentAmount*currentPrice)))*currentAmount).toString()))
+                        dbCash.addCash(soldCost.toString())
+                        Toast.makeText(this, "Crypto sold.", Toast.LENGTH_SHORT).show()
+                        sellDialog.dismiss()
+                    } else {
+                        Toast.makeText(this, "You don't have enough to sell this amount.", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+
+                bindingSellDialog.tvCancel.setOnClickListener {
+                    sellDialog.dismiss()
+                }
+
+                sellDialog.show()
+            }
+        } else {
+
+            bindingCoin.llHoldingInfo.visibility = View.GONE
+
+            bindingCoin.btnSell.visibility = View.GONE
         }
 
         bindingCoin.btnBuy.setOnClickListener {
@@ -84,43 +155,6 @@ class CoinActivity : AppCompatActivity() {
 
             buyDialog.show()
         }
-
-        bindingCoin.btnSell.setOnClickListener {
-            val sellDialog = Dialog(this, R.style.Theme_Dialog)
-            sellDialog.setCancelable(false)
-            bindingSellDialog = DialogSellBinding.inflate(layoutInflater)
-            val view = bindingSellDialog.root
-            sellDialog.setContentView(view)
-            sellDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-            bindingSellDialog.ofSymbol.text = "of " + Globals.SELECTED_COIN_SYM.uppercase()
-
-            bindingSellDialog.tvSell.setOnClickListener {
-                val dbCrypto = HoldingHandler(this, null)
-                val dbCash = CashHandler(this, null)
-                val existingCost = dbCrypto.getCost(Globals.SELECTED_COIN_SYM).toFloat()
-                val soldCost = bindingSellDialog.etAmount.text.toString().toFloat()
-                val currentAmount = dbCrypto.getAmount(Globals.SELECTED_COIN_SYM).toFloat()
-                val currentPrice = coinCurrentPrice.toFloat()
-                if (existingCost >= soldCost) {
-                    dbCrypto.sell(HoldingModel(Globals.SELECTED_COIN_SYM, Globals.SELECTED_COIN_ID, ((1-(soldCost/(currentAmount*currentPrice)))*existingCost).toString(), ((1-(soldCost/(currentAmount*currentPrice)))*currentAmount).toString()))
-                    dbCash.addCash(soldCost.toString())
-                    Toast.makeText(this, "Crypto sold.", Toast.LENGTH_SHORT).show()
-                    sellDialog.dismiss()
-                } else {
-                    Toast.makeText(this, "You don't have enough to sell this amount.", Toast.LENGTH_SHORT).show()
-                }
-
-            }
-
-            bindingSellDialog.tvCancel.setOnClickListener {
-                sellDialog.dismiss()
-            }
-
-            sellDialog.show()
-        }
-
-        setUpCoinInfo(7)
 
         bindingCoin.btn7d.setOnClickListener {
             setUpCoinInfo(7)
