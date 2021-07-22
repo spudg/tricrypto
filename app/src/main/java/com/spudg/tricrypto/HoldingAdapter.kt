@@ -2,15 +2,12 @@ package com.spudg.tricrypto
 
 import android.content.Context
 import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.spudg.tricrypto.databinding.CoinRowBinding
 import com.spudg.tricrypto.databinding.HoldingRowBinding
 import drewcarlson.coingecko.CoinGeckoClient
-import drewcarlson.coingecko.models.coins.CoinMarkets
 import drewcarlson.coingecko.models.coins.CoinMarketsList
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -24,7 +21,8 @@ class HoldingAdapter(private val context: Context, private val holdings: ArrayLi
     private val coinGecko = CoinGeckoClient.create()
     private lateinit var coins: CoinMarketsList
 
-    inner class HoldingViewHolder(val binding: HoldingRowBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class HoldingViewHolder(val binding: HoldingRowBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         setDataFromAPI()
@@ -70,7 +68,7 @@ class HoldingAdapter(private val context: Context, private val holdings: ArrayLi
                 val cost = context.getCost(holding.symbol)
                 val value = (price.toFloat() * amount.toFloat()).toString()
                 val symbol = holding.symbol.uppercase()
-                val percentageChange = (value.toFloat() - cost.toFloat())/cost.toFloat()
+                val percentageChange = (value.toFloat() - cost.toFloat()) / cost.toFloat()
 
                 binding.amountAndSymbol.text = "${amountFormatter.format(amount.toFloat())} $symbol"
                 binding.cost.text = "Cost = ${usdFormatter.format(cost.toFloat())}"

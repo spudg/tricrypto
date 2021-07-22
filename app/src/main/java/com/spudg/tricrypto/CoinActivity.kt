@@ -5,7 +5,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -62,13 +61,15 @@ class CoinActivity : AppCompatActivity() {
 
         if (dbHolding.getAmount(Globals.SELECTED_COIN_SYM).toFloat() > 0F) {
 
-            val value = dbHolding.getAmount(Globals.SELECTED_COIN_SYM).toFloat() * coinCurrentPrice.toFloat()
+            val value = dbHolding.getAmount(Globals.SELECTED_COIN_SYM)
+                .toFloat() * coinCurrentPrice.toFloat()
             val cost = dbHolding.getCost(Globals.SELECTED_COIN_SYM).toFloat()
             val amount = dbHolding.getAmount(Globals.SELECTED_COIN_SYM).toFloat()
-            val pReturn = (value-cost)/cost
+            val pReturn = (value - cost) / cost
 
             bindingCoin.llHoldingInfo.visibility = View.VISIBLE
-            bindingCoin.infoHeader.text = "Your " + Globals.SELECTED_COIN_SYM.uppercase() + " holdings"
+            bindingCoin.infoHeader.text =
+                "Your " + Globals.SELECTED_COIN_SYM.uppercase() + " holdings"
             bindingCoin.value.text = "Value: " + usdFormatter.format(value)
             bindingCoin.pReturn.text = percentFormatter.format(pReturn)
             if (pReturn < 0) {
@@ -101,12 +102,23 @@ class CoinActivity : AppCompatActivity() {
                     val currentAmount = dbCrypto.getAmount(Globals.SELECTED_COIN_SYM).toFloat()
                     val currentPrice = coinCurrentPrice.toFloat()
                     if (existingCost >= soldCost) {
-                        dbCrypto.sell(HoldingModel(Globals.SELECTED_COIN_SYM, Globals.SELECTED_COIN_ID, ((1-(soldCost/(currentAmount*currentPrice)))*existingCost).toString(), ((1-(soldCost/(currentAmount*currentPrice)))*currentAmount).toString()))
+                        dbCrypto.sell(
+                            HoldingModel(
+                                Globals.SELECTED_COIN_SYM,
+                                Globals.SELECTED_COIN_ID,
+                                ((1 - (soldCost / (currentAmount * currentPrice))) * existingCost).toString(),
+                                ((1 - (soldCost / (currentAmount * currentPrice))) * currentAmount).toString()
+                            )
+                        )
                         dbCash.addCash(soldCost.toString())
                         Toast.makeText(this, "Crypto sold.", Toast.LENGTH_SHORT).show()
                         sellDialog.dismiss()
                     } else {
-                        Toast.makeText(this, "You don't have enough to sell this amount.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            "You don't have enough to sell this amount.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
 
                 }
@@ -140,7 +152,15 @@ class CoinActivity : AppCompatActivity() {
                 val existingCost = dbCrypto.getCost(Globals.SELECTED_COIN_SYM).toFloat()
                 val newCost = bindingBuyDialog.etAmount.text.toString().toFloat()
                 if (dbCash.getCashBal().toFloat() >= newCost) {
-                    dbCrypto.buy(HoldingModel(Globals.SELECTED_COIN_SYM, Globals.SELECTED_COIN_ID, (existingCost+newCost).toString(), (dbCrypto.getAmount(Globals.SELECTED_COIN_SYM).toFloat()+(newCost/coinCurrentPrice.toFloat())).toString()))
+                    dbCrypto.buy(
+                        HoldingModel(
+                            Globals.SELECTED_COIN_SYM,
+                            Globals.SELECTED_COIN_ID,
+                            (existingCost + newCost).toString(),
+                            (dbCrypto.getAmount(Globals.SELECTED_COIN_SYM)
+                                .toFloat() + (newCost / coinCurrentPrice.toFloat())).toString()
+                        )
+                    )
                     dbCash.takeCash(newCost.toString())
                     Toast.makeText(this, "Crypto bought.", Toast.LENGTH_SHORT).show()
                     buyDialog.dismiss()

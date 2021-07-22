@@ -3,13 +3,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/holdingRow"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
     android:background="@drawable/coin_row_background"
     android:elevation="20dp"
-    android:layout_margin="10dp"
-    android:layout_width="match_parent"
-    android:padding="10dp"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <LinearLayout
         android:id="@+id/holdingInnerRow"
@@ -24,15 +24,15 @@
             android:layout_height="50dp" />
 
         <LinearLayout
-            android:layout_marginStart="10dp"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
                 android:id="@+id/amountAndSymbol"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans_light"
                 android:textColor="#212121"
@@ -49,64 +49,63 @@
                 android:textStyle="italic" />
 
 
-
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:orientation="vertical">
+
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/percentageChange"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/open_sans_light"
+                    android:text="+ 45.4%"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
 
-                    <TextView
-                        android:id="@+id/percentageChange"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:fontFamily="@font/open_sans_light"
-                        android:text="+ 45.4%"
-                        android:textColor="@android:color/holo_green_dark"
-                        android:textSize="14sp"
-                        android:textStyle="italic" />
-
-                    <TextView
-                        android:id="@+id/value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:fontFamily="@font/open_sans_light"
-                        android:textColor="#212121"
-                        android:textSize="18sp"
-                        tools:text="$734,135.26" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/value"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:orientation="horizontal"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="10dp" >
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/open_sans_light"
+                    android:textColor="#212121"
+                    android:textSize="18sp"
+                    tools:text="$734,135.26" />
 
-                    <TextView
-                        android:id="@+id/cost"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/open_sans_light"
-                        android:text="Cost = $3,982"
-                        android:textSize="14sp"
-                        android:textStyle="italic" />
+            </LinearLayout>
 
-                </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:orientation="horizontal"
+                android:paddingStart="20dp"
+                android:paddingEnd="10dp">
+
+                <TextView
+                    android:id="@+id/cost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_light"
+                    android:text="Cost = $3,982"
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
 
             </LinearLayout>
 
         </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

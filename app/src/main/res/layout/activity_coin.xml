@@ -215,113 +215,113 @@
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:gravity="center_horizontal"
-                android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/btnBuy"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_marginStart="40dp"
-                android:padding="20dp"
-                android:gravity="center_horizontal"
-                android:fontFamily="@font/open_sans_light"
-                android:textSize="16sp"
-                android:background="@drawable/coin_row_background"
-                android:elevation="10dp"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="20dp"
-                android:textColor="@android:color/holo_green_dark"
-                android:foreground="?attr/selectableItemBackground"
-                android:layout_marginEnd="30dp"
                 android:layout_height="wrap_content"
-                android:text="Buy"/>
-
-            <TextView
-                android:id="@+id/btnSell"
-                android:layout_width="0dp"
-                android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:padding="20dp"
-                android:elevation="10dp"
-                android:layout_marginBottom="20dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginTop="20dp"
-                android:foreground="?attr/selectableItemBackground"
-                android:layout_marginStart="30dp"
-                android:fontFamily="@font/open_sans_light"
-                android:textColor="@android:color/holo_red_dark"
-                android:background="@drawable/coin_row_background"
-                android:textSize="16sp"
-                android:layout_height="wrap_content"
-                android:text="Sell"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/btnBuy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/coin_row_background"
+                    android:elevation="10dp"
+                    android:fontFamily="@font/open_sans_light"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center_horizontal"
+                    android:padding="20dp"
+                    android:text="Buy"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/btnSell"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/coin_row_background"
+                    android:elevation="10dp"
+                    android:fontFamily="@font/open_sans_light"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center_horizontal"
+                    android:padding="20dp"
+                    android:text="Sell"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llHoldingInfo"
-                android:orientation="vertical"
-                android:padding="15dp"
-                android:background="@drawable/coin_row_background"
-                android:layout_margin="20dp"
-                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="20dp"
                 android:layout_marginBottom="10dp"
+                android:background="@drawable/coin_row_background"
                 android:elevation="20dp"
-                android:layout_height="wrap_content">
+                android:orientation="vertical"
+                android:padding="15dp">
 
                 <TextView
                     android:id="@+id/infoHeader"
-                    android:fontFamily="@font/open_sans_light"
                     android:layout_width="match_parent"
-                    android:textColor="#212121"
-                    android:gravity="center_horizontal"
-                    android:textSize="16sp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:text="Your BTC holdings"/>
+                    android:fontFamily="@font/open_sans_light"
+                    android:gravity="center_horizontal"
+                    android:text="Your BTC holdings"
+                    android:textColor="#212121"
+                    android:textSize="16sp" />
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:gravity="center_horizontal"
-                    android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/value"
-                    android:layout_width="wrap_content"
-                    android:fontFamily="@font/open_sans_light"
                     android:layout_height="wrap_content"
-                    android:text="Value: $1,502.33"/>
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_light"
+                        android:text="Value: $1,502.33" />
 
                     <TextView
                         android:id="@+id/pReturn"
                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/open_sans_light"
-                        android:layout_height="wrap_content"
-                        android:textColor="@android:color/holo_green_dark"
-                        android:text="+16.4%"/>
+                        android:text="+16.4%"
+                        android:textColor="@android:color/holo_green_dark" />
 
                 </LinearLayout>
 
-            <TextView
-                android:id="@+id/amount"
-                android:gravity="center_horizontal"
-                android:fontFamily="@font/open_sans_light"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Amount: 0.19232"/>
+                <TextView
+                    android:id="@+id/amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_light"
+                    android:gravity="center_horizontal"
+                    android:text="Amount: 0.19232" />
 
-            <TextView
-                android:id="@+id/cost"
-                android:gravity="center_horizontal"
-                android:layout_width="match_parent"
-                android:fontFamily="@font/open_sans_light"
-                android:layout_height="wrap_content"
-                android:text="Cost: $1,439.33"/>
+                <TextView
+                    android:id="@+id/cost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_light"
+                    android:gravity="center_horizontal"
+                    android:text="Cost: $1,439.33" />
 
             </LinearLayout>
 

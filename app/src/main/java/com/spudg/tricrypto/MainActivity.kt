@@ -2,13 +2,11 @@ package com.spudg.tricrypto
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.spudg.tricrypto.databinding.ActivityMainBinding
 import drewcarlson.coingecko.CoinGeckoClient
-import drewcarlson.coingecko.models.coins.CoinMarkets
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.text.DecimalFormat
@@ -78,13 +76,18 @@ class MainActivity : AppCompatActivity() {
             val holdings = dbCrypto.getAllHoldings()
             var runningTotal = 0.00
             for (holding in holdings) {
-                runningTotal += holding.amount.toFloat() * coinGecko.getCoinMarkets("usd", holding.id).markets[0].currentPrice.toString().toFloat()
+                runningTotal += holding.amount.toFloat() * coinGecko.getCoinMarkets(
+                    "usd",
+                    holding.id
+                ).markets[0].currentPrice.toString().toFloat()
             }
 
             val usdFormatter: NumberFormat = DecimalFormat("$#,##0.00")
-            bindingMain.portfolioHeading.text = "Portfolio - " + usdFormatter.format(runningTotal + dbCash.getCashBal().toFloat())
+            bindingMain.portfolioHeading.text =
+                "Portfolio - " + usdFormatter.format(runningTotal + dbCash.getCashBal().toFloat())
             bindingMain.cryptoValue.text = "Crypto - " + usdFormatter.format(runningTotal)
-            bindingMain.cashValue.text = "Cash - " + usdFormatter.format(dbCash.getCashBal().toFloat())
+            bindingMain.cashValue.text =
+                "Cash - " + usdFormatter.format(dbCash.getCashBal().toFloat())
 
         }
     }
@@ -95,8 +98,6 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, CoinActivity::class.java)
         startActivity(intent)
     }
-
-
 
 
 }

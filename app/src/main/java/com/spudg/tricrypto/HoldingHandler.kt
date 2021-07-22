@@ -4,10 +4,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.util.Log
-import java.lang.Exception
-import java.util.*
-import kotlin.collections.ArrayList
 
 class HoldingHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
@@ -68,7 +64,7 @@ class HoldingHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         values.put(KEY_COST, holding.cost)
         values.put(KEY_AMOUNT, holding.amount)
         if (held(holding.symbol)) {
-            db.update(TABLE_HOLDINGS, values, KEY_SYMBOL + "=" + "'${holding.symbol}'" , null)
+            db.update(TABLE_HOLDINGS, values, KEY_SYMBOL + "=" + "'${holding.symbol}'", null)
         } else {
             db.insert(TABLE_HOLDINGS, null, values)
         }
@@ -84,7 +80,7 @@ class HoldingHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         values.put(KEY_AMOUNT, holding.amount)
         try {
             db.update(TABLE_HOLDINGS, values, KEY_SYMBOL + "=" + "'${holding.symbol}'", null)
-        } catch (e: Exception){
+        } catch (e: Exception) {
             db.insert(TABLE_HOLDINGS, null, values)
         }
         db.close()
