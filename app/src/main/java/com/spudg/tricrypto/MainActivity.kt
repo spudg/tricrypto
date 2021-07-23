@@ -1,6 +1,7 @@
 package com.spudg.tricrypto
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -92,12 +93,18 @@ class MainActivity : AppCompatActivity() {
                     holding.id
                 ).markets[0].currentPrice.toString().toFloat()
             }
+            val totalReturn = (((runningTotal+(dbCash.getCashBal()).toFloat()))/100000)-1
 
             val usdFormatter: NumberFormat = DecimalFormat("$#,##0.00")
             val percentFormatter: NumberFormat = DecimalFormat("#,##0.00%")
             bindingMain.portfolioHeading.text =
                 "Portfolio - " + usdFormatter.format(runningTotal + dbCash.getCashBal().toFloat())
-            bindingMain.totalReturn.text = percentFormatter.format((runningTotal/100000)-1)
+            if (totalReturn >= 0) {
+                bindingMain.totalReturn.setTextColor(Color.GREEN)
+            } else {
+                bindingMain.totalReturn.setTextColor(Color.RED)
+            }
+            bindingMain.totalReturn.text = percentFormatter.format(totalReturn)
             bindingMain.cryptoValue.text = "Crypto - " + usdFormatter.format(runningTotal)
             bindingMain.cashValue.text =
                 "Cash - " + usdFormatter.format(dbCash.getCashBal().toFloat())

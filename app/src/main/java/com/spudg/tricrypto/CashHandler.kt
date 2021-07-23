@@ -50,7 +50,7 @@ class CashHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     fun setInitial() {
         val db = this.writableDatabase
         val values = ContentValues()
-        values.put(KEY_AMOUNT, "500000")
+        values.put(KEY_AMOUNT, "100000")
         db.insert(TABLE_CASH, null, values)
     }
 
