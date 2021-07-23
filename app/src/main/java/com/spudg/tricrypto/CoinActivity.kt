@@ -42,6 +42,7 @@ class CoinActivity : AppCompatActivity() {
         setContentView(view)
 
         setUpCoinInfo(7)
+
         val dbHolding = HoldingHandler(this, null)
         val usdFormatter: NumberFormat = DecimalFormat("$#,##0.00")
         val amountFormatter: NumberFormat = DecimalFormat("#,###.####")
@@ -92,35 +93,54 @@ class CoinActivity : AppCompatActivity() {
                 sellDialog.setContentView(view)
                 sellDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
+                val dbCrypto = HoldingHandler(this, null)
+                val currentAmount = dbCrypto.getAmount(Globals.SELECTED_COIN_SYM).toFloat()
+                val currentPrice = coinCurrentPrice.toFloat()
+
                 bindingSellDialog.ofSymbol.text = "of " + Globals.SELECTED_COIN_SYM.uppercase()
+                bindingSellDialog.currentHoldingValue.text = "Current holding value: " + usdFormatter.format(currentAmount*currentPrice)
 
                 bindingSellDialog.tvSell.setOnClickListener {
+                    if (bindingSellDialog.etAmount.text.length <= 0)  {
+                        Toast.makeText(this, "Enter a value to sell.", Toast.LENGTH_SHORT).show()
+                    } else {
+                        val dbCrypto = HoldingHandler(this, null)
+                        val dbCash = CashHandler(this, null)
+                        val existingCost = dbCrypto.getCost(Globals.SELECTED_COIN_SYM).toFloat()
+                        val soldCost = bindingSellDialog.etAmount.text.toString().toFloat()
+                        val currentAmount = dbCrypto.getAmount(Globals.SELECTED_COIN_SYM).toFloat()
+                        val currentPrice = coinCurrentPrice.toFloat()
+                        if (existingCost >= soldCost) {
+                            dbCrypto.sell(
+                                HoldingModel(
+                                    Globals.SELECTED_COIN_SYM,
+                                    Globals.SELECTED_COIN_ID,
+                                    ((1 - (soldCost / (currentAmount * currentPrice))) * existingCost).toString(),
+                                    ((1 - (soldCost / (currentAmount * currentPrice))) * currentAmount).toString()
+                                )
+                            )
+                            dbCash.addCash(soldCost.toString())
+                            Toast.makeText(this, "Crypto sold.", Toast.LENGTH_SHORT).show()
+                            sellDialog.dismiss()
+                        } else {
+                            Toast.makeText(
+                                this,
+                                "You don't have enough to sell this amount.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                }
+
+                bindingSellDialog.tvSellAll.setOnClickListener {
                     val dbCrypto = HoldingHandler(this, null)
                     val dbCash = CashHandler(this, null)
-                    val existingCost = dbCrypto.getCost(Globals.SELECTED_COIN_SYM).toFloat()
-                    val soldCost = bindingSellDialog.etAmount.text.toString().toFloat()
                     val currentAmount = dbCrypto.getAmount(Globals.SELECTED_COIN_SYM).toFloat()
                     val currentPrice = coinCurrentPrice.toFloat()
-                    if (existingCost >= soldCost) {
-                        dbCrypto.sell(
-                            HoldingModel(
-                                Globals.SELECTED_COIN_SYM,
-                                Globals.SELECTED_COIN_ID,
-                                ((1 - (soldCost / (currentAmount * currentPrice))) * existingCost).toString(),
-                                ((1 - (soldCost / (currentAmount * currentPrice))) * currentAmount).toString()
-                            )
-                        )
-                        dbCash.addCash(soldCost.toString())
-                        Toast.makeText(this, "Crypto sold.", Toast.LENGTH_SHORT).show()
-                        sellDialog.dismiss()
-                    } else {
-                        Toast.makeText(
-                            this,
-                            "You don't have enough to sell this amount.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-
+                    dbCrypto.removeHolding(Globals.SELECTED_COIN_SYM)
+                    dbCash.addCash((currentAmount*currentPrice).toString())
+                    Toast.makeText(this, "Crypto sold.", Toast.LENGTH_SHORT).show()
+                    sellDialog.dismiss()
                 }
 
                 bindingSellDialog.tvCancel.setOnClickListener {
@@ -144,7 +164,11 @@ class CoinActivity : AppCompatActivity() {
             buyDialog.setContentView(view)
             buyDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
+            val dbCash = CashHandler(this, null)
+            val currentCash = dbCash.getCashBal()
+
             bindingBuyDialog.ofSymbol.text = "of " + Globals.SELECTED_COIN_SYM.uppercase()
+            bindingBuyDialog.availableCash.text = "Available cash: " + usdFormatter.format(currentCash.toFloat())
 
             bindingBuyDialog.tvBuy.setOnClickListener {
                 val dbCrypto = HoldingHandler(this, null)

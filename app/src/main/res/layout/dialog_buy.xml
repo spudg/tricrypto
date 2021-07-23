@@ -43,6 +43,17 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/availableCash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/open_sans_light"
+        android:text="Available cash: $1,293.22"
+        android:textSize="14sp" />
+
+
 
     <LinearLayout
         android:layout_width="match_parent"

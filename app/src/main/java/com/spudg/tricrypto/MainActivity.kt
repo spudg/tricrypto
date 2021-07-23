@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         val view = bindingMain.root
         setContentView(view)
 
+        cleanHoldings()
+
         bindingMain.marketBtn.setOnClickListener {
             val intent = Intent(this, MarketActivity::class.java)
             startActivity(intent)
@@ -38,6 +40,16 @@ class MainActivity : AppCompatActivity() {
         setTotalPortfolioValue()
         setUpHoldingList()
 
+    }
+
+    private fun cleanHoldings() {
+        val db = HoldingHandler(this, null)
+        val holdings = db.getAllHoldings()
+        for (item in holdings) {
+            if (item.amount.toFloat() <= 0) {
+                db.removeHolding(item.symbol)
+            }
+        }
     }
 
     private fun setUpHoldingList() {

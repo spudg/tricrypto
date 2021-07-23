@@ -32,6 +32,12 @@ class HoldingHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         onCreate(db)
     }
 
+    fun removeHolding(symbol: String) {
+        val db = this.writableDatabase
+        db.delete(TABLE_HOLDINGS, KEY_SYMBOL + "=" + "'${symbol}'", null)
+        db.close()
+    }
+
     fun getAllHoldings(): ArrayList<HoldingModel> {
         val db = this.readableDatabase
         val cursor = db.rawQuery("SELECT * FROM $TABLE_HOLDINGS", null)
