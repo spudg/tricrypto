@@ -95,6 +95,18 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/totalReturn"
+                app:layout_constraintTop_toTopOf="@id/portfolioHeading"
+                app:layout_constraintLeft_toRightOf="@id/portfolioHeading"
+                app:layout_constraintBottom_toBottomOf="@id/portfolioHeading"
+                android:layout_marginStart="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_light"
+                android:textColor="@android:color/holo_green_dark"
+                android:text="+3,425.61%" />
+
+            <TextView
                 android:id="@+id/cryptoValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

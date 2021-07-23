@@ -42,11 +42,7 @@ class CoinActivity : AppCompatActivity() {
         setContentView(view)
 
         setUpCoinInfo(7)
-
-        val dbHolding = HoldingHandler(this, null)
-        val usdFormatter: NumberFormat = DecimalFormat("$#,##0.00")
-        val amountFormatter: NumberFormat = DecimalFormat("#,###.####")
-        val percentFormatter: NumberFormat = DecimalFormat("#,##0.00%")
+        setUpUI()
 
         bindingCoin.portfolioBtn.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
@@ -60,8 +56,32 @@ class CoinActivity : AppCompatActivity() {
             finish()
         }
 
-        if (dbHolding.getAmount(Globals.SELECTED_COIN_SYM).toFloat() > 0F) {
+        bindingCoin.btn7d.setOnClickListener {
+            setUpCoinInfo(7)
+        }
 
+        bindingCoin.btn1m.setOnClickListener {
+            setUpCoinInfo(30)
+        }
+
+        bindingCoin.btn1y.setOnClickListener {
+            setUpCoinInfo(365)
+        }
+
+        bindingCoin.btn5y.setOnClickListener {
+            setUpCoinInfo(1825)
+        }
+
+    }
+
+    private fun setUpUI() {
+
+        val dbHolding = HoldingHandler(this, null)
+        val usdFormatter: NumberFormat = DecimalFormat("$#,##0.00")
+        val amountFormatter: NumberFormat = DecimalFormat("#,###.####")
+        val percentFormatter: NumberFormat = DecimalFormat("#,##0.00%")
+
+        if (dbHolding.getAmount(Globals.SELECTED_COIN_SYM).toFloat() > 0F) {
             val value = dbHolding.getAmount(Globals.SELECTED_COIN_SYM)
                 .toFloat() * coinCurrentPrice.toFloat()
             val cost = dbHolding.getCost(Globals.SELECTED_COIN_SYM).toFloat()
@@ -101,7 +121,7 @@ class CoinActivity : AppCompatActivity() {
                 bindingSellDialog.currentHoldingValue.text = "Current holding value: " + usdFormatter.format(currentAmount*currentPrice)
 
                 bindingSellDialog.tvSell.setOnClickListener {
-                    if (bindingSellDialog.etAmount.text.length <= 0)  {
+                    if (bindingSellDialog.etAmount.text.isEmpty())  {
                         Toast.makeText(this, "Enter a value to sell.", Toast.LENGTH_SHORT).show()
                     } else {
                         val dbCrypto = HoldingHandler(this, null)
@@ -122,6 +142,7 @@ class CoinActivity : AppCompatActivity() {
                             dbCash.addCash(soldCost.toString())
                             Toast.makeText(this, "Crypto sold.", Toast.LENGTH_SHORT).show()
                             sellDialog.dismiss()
+                            setUpUI()
                         } else {
                             Toast.makeText(
                                 this,
@@ -141,6 +162,7 @@ class CoinActivity : AppCompatActivity() {
                     dbCash.addCash((currentAmount*currentPrice).toString())
                     Toast.makeText(this, "Crypto sold.", Toast.LENGTH_SHORT).show()
                     sellDialog.dismiss()
+                    setUpUI()
                 }
 
                 bindingSellDialog.tvCancel.setOnClickListener {
@@ -188,6 +210,7 @@ class CoinActivity : AppCompatActivity() {
                     dbCash.takeCash(newCost.toString())
                     Toast.makeText(this, "Crypto bought.", Toast.LENGTH_SHORT).show()
                     buyDialog.dismiss()
+                    setUpUI()
                 } else {
                     Toast.makeText(this, "You don't have enough cash.", Toast.LENGTH_SHORT).show()
                 }
@@ -199,23 +222,6 @@ class CoinActivity : AppCompatActivity() {
 
             buyDialog.show()
         }
-
-        bindingCoin.btn7d.setOnClickListener {
-            setUpCoinInfo(7)
-        }
-
-        bindingCoin.btn1m.setOnClickListener {
-            setUpCoinInfo(30)
-        }
-
-        bindingCoin.btn1y.setOnClickListener {
-            setUpCoinInfo(365)
-        }
-
-        bindingCoin.btn5y.setOnClickListener {
-            setUpCoinInfo(1825)
-        }
-
     }
 
     private fun setUpCoinInfo(days: Int) = runBlocking {

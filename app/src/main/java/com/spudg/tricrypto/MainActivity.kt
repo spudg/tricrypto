@@ -24,8 +24,6 @@ class MainActivity : AppCompatActivity() {
         val view = bindingMain.root
         setContentView(view)
 
-        cleanHoldings()
-
         bindingMain.marketBtn.setOnClickListener {
             val intent = Intent(this, MarketActivity::class.java)
             startActivity(intent)
@@ -37,7 +35,8 @@ class MainActivity : AppCompatActivity() {
             dbCash.setInitial()
         }
 
-        setTotalPortfolioValue()
+        cleanHoldings()
+        setTotalPortfolioInfo()
         setUpHoldingList()
 
     }
@@ -80,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         return db.getCost(symbol)
     }
 
-    private fun setTotalPortfolioValue() = runBlocking {
+    private fun setTotalPortfolioInfo() = runBlocking {
         launch {
 
             val dbCrypto = HoldingHandler(this@MainActivity, null)
@@ -95,8 +94,10 @@ class MainActivity : AppCompatActivity() {
             }
 
             val usdFormatter: NumberFormat = DecimalFormat("$#,##0.00")
+            val percentFormatter: NumberFormat = DecimalFormat("#,##0.00%")
             bindingMain.portfolioHeading.text =
                 "Portfolio - " + usdFormatter.format(runningTotal + dbCash.getCashBal().toFloat())
+            bindingMain.totalReturn.text = percentFormatter.format((runningTotal/100000)-1)
             bindingMain.cryptoValue.text = "Crypto - " + usdFormatter.format(runningTotal)
             bindingMain.cashValue.text =
                 "Cash - " + usdFormatter.format(dbCash.getCashBal().toFloat())
