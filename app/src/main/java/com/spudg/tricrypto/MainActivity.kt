@@ -3,6 +3,7 @@ package com.spudg.tricrypto
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -87,11 +88,14 @@ class MainActivity : AppCompatActivity() {
             val dbCash = CashHandler(this@MainActivity, null)
             val holdings = dbCrypto.getAllHoldings()
             var runningTotal = 0.00
+            val allCoins = coinGecko.getCoinMarkets("usd").markets
             for (holding in holdings) {
-                runningTotal += holding.amount.toFloat() * coinGecko.getCoinMarkets(
-                    "usd",
-                    holding.id
-                ).markets[0].currentPrice.toString().toFloat()
+                for (coin in allCoins) {
+                    if (coin.id == holding.id) {
+                        runningTotal += holding.amount.toFloat() * coin.currentPrice.toFloat()
+
+                    }
+                }
             }
             val totalReturn = (((runningTotal+(dbCash.getCashBal()).toFloat()))/100000)-1
 
