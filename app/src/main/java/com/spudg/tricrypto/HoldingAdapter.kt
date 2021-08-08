@@ -2,6 +2,7 @@ package com.spudg.tricrypto
 
 import android.content.Context
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +14,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.text.DecimalFormat
 import java.text.NumberFormat
-
 
 class HoldingAdapter(private val context: Context, private val holdings: ArrayList<HoldingModel>) :
     RecyclerView.Adapter<HoldingAdapter.HoldingViewHolder>() {
@@ -93,9 +93,8 @@ class HoldingAdapter(private val context: Context, private val holdings: ArrayLi
 
     private fun setDataFromAPI() = runBlocking {
         launch {
-            coins = coinGecko.getCoinMarkets("usd")
+            coins = coinGecko.getCoinMarkets("usd",null,null,250)
         }
-
     }
 
 }

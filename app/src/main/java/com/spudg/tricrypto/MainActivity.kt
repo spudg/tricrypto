@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
             val dbCash = CashHandler(this@MainActivity, null)
             val holdings = dbCrypto.getAllHoldings()
             var runningTotal = 0.00
-            val allCoins = coinGecko.getCoinMarkets("usd").markets
+            val allCoins = coinGecko.getCoinMarkets("usd",null,null,250,1).markets
             for (holding in holdings) {
                 for (coin in allCoins) {
                     if (coin.id == holding.id) {

@@ -62,7 +62,7 @@ class MarketActivity : AppCompatActivity() {
     private fun setUpCoinList() = runBlocking {
         launch {
 
-            val coinList = coinGecko.getCoinMarkets("usd", null, null, null, null, true)
+            val coinList = coinGecko.getCoinMarkets("usd",null,null,100,1)
             val allCoins = arrayListOf<CoinMarkets>()
 
             repeat(coinList.markets.size) {

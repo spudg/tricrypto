@@ -11,7 +11,6 @@ import drewcarlson.coingecko.models.coins.CoinMarkets
 import java.text.DecimalFormat
 import java.text.NumberFormat
 
-
 class CoinListAdapter(private val context: Context, private val coins: ArrayList<CoinMarkets>) :
     RecyclerView.Adapter<CoinListAdapter.CoinViewHolder>() {
 
