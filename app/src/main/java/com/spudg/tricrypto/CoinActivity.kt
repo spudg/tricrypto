@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -242,6 +243,7 @@ class CoinActivity : AppCompatActivity() {
             ).markets[0]
             val chartData: MarketChart =
                 coinGecko.getCoinMarketChartById(Globals.SELECTED_COIN_ID, "usd", days)
+            Log.e("test",chartData.prices.last().toString())
 
             coinCurrentPrice = coin.currentPrice.toString()
 
@@ -299,12 +301,14 @@ class CoinActivity : AppCompatActivity() {
             repeat(chartData.prices.size) {
                 yValues.add(chartData.prices[it].last().toString().toFloat())
             }
+            Log.e("test1",yValues.last().toString())
 
             // Make and configure chart
 
-            repeat(coin.sparklineIn7d!!.price!!.size) {
+            repeat(chartData.prices.size) {
                 entriesLine.add(Entry(it.toFloat(), yValues[it]))
             }
+            Log.e("test2",entriesLine.size.toString())
             val dataSetLine = LineDataSet(entriesLine, "")
             val dataLine = LineData(dataSetLine)
 
