@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.spudg.tricrypto.databinding.ActivityMainBinding
@@ -30,6 +31,22 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, MarketActivity::class.java)
             startActivity(intent)
             finish()
+        }
+
+        bindingMain.moreBtn.setOnClickListener {
+            val popupMenu = PopupMenu(this, bindingMain.moreBtn)
+            popupMenu.menuInflater.inflate(R.menu.menu_popup, popupMenu.menu)
+            popupMenu.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.actionAbout -> {
+                        val intent = Intent(this, AboutActivity::class.java)
+                        startActivity(intent)
+                    }
+                }
+                true
+            }
+
+            popupMenu.show()
         }
 
         val dbCash = CashHandler(this, null)

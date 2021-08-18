@@ -12,23 +12,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TriCrypto">
         <activity
+            android:name=".AboutActivity"
+            android:exported="true" />
+        <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CoinActivity"
+        <activity
+            android:name=".CoinActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.TriCrypto"/>
-        <activity android:name=".MarketActivity"
+            android:theme="@style/Theme.TriCrypto" />
+        <activity
+            android:name=".MarketActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.TriCrypto"/>
-        <activity android:name=".MainActivity"
+            android:theme="@style/Theme.TriCrypto" />
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.TriCrypto"/>
+            android:theme="@style/Theme.TriCrypto" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
