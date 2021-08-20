@@ -34,7 +34,7 @@ class CoinActivity : AppCompatActivity() {
 
     private var entriesLine: ArrayList<Entry> = ArrayList()
 
-    var coinCurrentPrice = "0"
+    private var coinCurrentPrice = "0"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,16 +91,16 @@ class CoinActivity : AppCompatActivity() {
 
             bindingCoin.llHoldingInfo.visibility = View.VISIBLE
             bindingCoin.infoHeader.text =
-                "Your " + Globals.SELECTED_COIN_SYM.uppercase() + " holdings"
-            bindingCoin.value.text = "Value: " + usdFormatter.format(value)
+                getString(R.string.holding_title, Globals.SELECTED_COIN_SYM.uppercase())
+            bindingCoin.value.text = getString(R.string.value_figure, usdFormatter.format(value))
             bindingCoin.pReturn.text = percentFormatter.format(pReturn)
             if (pReturn < 0) {
                 bindingCoin.pReturn.setTextColor(Color.RED)
             } else {
                 bindingCoin.pReturn.setTextColor(Color.GREEN)
             }
-            bindingCoin.amount.text = "Amount: " + amountFormatter.format(amount)
-            bindingCoin.cost.text = "Cost: " + usdFormatter.format(cost)
+            bindingCoin.amount.text = getString(R.string.amount_figure, amountFormatter.format(amount))
+            bindingCoin.cost.text = getString(R.string.cost_figure, usdFormatter.format(cost))
 
 
 
@@ -118,20 +118,18 @@ class CoinActivity : AppCompatActivity() {
                 val currentAmount = dbCrypto.getAmount(Globals.SELECTED_COIN_SYM).toFloat()
                 val currentPrice = coinCurrentPrice.toFloat()
 
-                bindingSellDialog.ofSymbol.text = "of " + Globals.SELECTED_COIN_SYM.uppercase()
+                bindingSellDialog.ofSymbol.text = getString(R.string.of_symbol, Globals.SELECTED_COIN_SYM.uppercase())
                 bindingSellDialog.currentHoldingValue.text =
-                    "Current holding value: " + usdFormatter.format(currentAmount * currentPrice)
+                    getString(R.string.current_holding_value_figure, usdFormatter.format(currentAmount * currentPrice))
+
 
                 bindingSellDialog.tvSell.setOnClickListener {
                     if (bindingSellDialog.etAmount.text.isEmpty()) {
                         Toast.makeText(this, "Enter a value to sell.", Toast.LENGTH_SHORT).show()
                     } else {
-                        val dbCrypto = HoldingHandler(this, null)
                         val dbCash = CashHandler(this, null)
                         val existingCost = dbCrypto.getCost(Globals.SELECTED_COIN_SYM).toFloat()
                         val soldCost = bindingSellDialog.etAmount.text.toString().toFloat()
-                        val currentAmount = dbCrypto.getAmount(Globals.SELECTED_COIN_SYM).toFloat()
-                        val currentPrice = coinCurrentPrice.toFloat()
                         if (existingCost >= soldCost) {
                             dbCrypto.sell(
                                 HoldingModel(
@@ -156,10 +154,7 @@ class CoinActivity : AppCompatActivity() {
                 }
 
                 bindingSellDialog.tvSellAll.setOnClickListener {
-                    val dbCrypto = HoldingHandler(this, null)
                     val dbCash = CashHandler(this, null)
-                    val currentAmount = dbCrypto.getAmount(Globals.SELECTED_COIN_SYM).toFloat()
-                    val currentPrice = coinCurrentPrice.toFloat()
                     dbCrypto.removeHolding(Globals.SELECTED_COIN_SYM)
                     dbCash.addCash((currentAmount * currentPrice).toString())
                     Toast.makeText(this, "Crypto sold.", Toast.LENGTH_SHORT).show()
@@ -188,16 +183,15 @@ class CoinActivity : AppCompatActivity() {
             buyDialog.setContentView(view)
             buyDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
+            val dbCrypto = HoldingHandler(this, null)
             val dbCash = CashHandler(this, null)
             val currentCash = dbCash.getCashBal()
 
-            bindingBuyDialog.ofSymbol.text = "of " + Globals.SELECTED_COIN_SYM.uppercase()
+            bindingBuyDialog.ofSymbol.text = getString(R.string.of_symbol, Globals.SELECTED_COIN_SYM.uppercase())
             bindingBuyDialog.availableCash.text =
-                "Available cash: " + usdFormatter.format(currentCash.toFloat())
+                getString(R.string.available_cash_figure, usdFormatter.format(currentCash.toFloat()))
 
             bindingBuyDialog.tvBuy.setOnClickListener {
-                val dbCrypto = HoldingHandler(this, null)
-                val dbCash = CashHandler(this, null)
                 val existingCost = dbCrypto.getCost(Globals.SELECTED_COIN_SYM).toFloat()
                 val newCost = bindingBuyDialog.etAmount.text.toString().toFloat()
                 if (dbCash.getCashBal().toFloat() >= newCost) {
@@ -281,12 +275,12 @@ class CoinActivity : AppCompatActivity() {
             if (coin.maxSupply != 0.0) {
                 bindingCoin.maxSupply.text = number0dpFormatter.format(coin.maxSupply)
             } else {
-                bindingCoin.maxSupply.text = "Unlimited"
+                bindingCoin.maxSupply.text = getString(R.string.unlimited)
             }
             if (coin.totalSupply != null) {
                 bindingCoin.totalSupply.text = number0dpFormatter.format(coin.totalSupply)
             } else {
-                bindingCoin.totalSupply.text = "Unlimited"
+                bindingCoin.totalSupply.text = getString(R.string.unlimited)
             }
             bindingCoin.ath.text = usdFormatter.format(coin.ath)
             bindingCoin.athDate.text = coin.athDate

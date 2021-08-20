@@ -12,13 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TriCrypto">
         <activity
-            android:name=".AboutActivity"
-            android:exported="true" />
+            android:name=".AboutActivity" />
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Splash"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

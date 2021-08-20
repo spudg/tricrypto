@@ -85,4 +85,16 @@
     <string name="_45_4">+ 45.4%</string>
     <string name="cost_3_982">Cost = $3,982</string>
     <string name="about">About</string>
+    <string name="holding_title">Your %1$s holdings</string>
+    <string name="value_figure">Value: %1$s</string>
+    <string name="amount_figure">Amount: %1$s</string>
+    <string name="cost_figure">Cost: %1$s</string>
+    <string name="of_symbol">of %1$s</string>
+    <string name="current_holding_value_figure">Current holding value: %1$s</string>
+    <string name="available_cash_figure">Available cash: %1$s</string>
+    <string name="unlimited">Unlimited</string>
+    <string name="name_symbol">%1$s %2$s</string>
+    <string name="portfolio_value">Portfolio - %1$s</string>
+    <string name="crypto_value">Crypto - %1$s</string>
+    <string name="cash_value">Cash - %1$s</string>
 </resources>

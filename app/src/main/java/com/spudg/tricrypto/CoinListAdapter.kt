@@ -1,6 +1,7 @@
 package com.spudg.tricrypto
 
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup

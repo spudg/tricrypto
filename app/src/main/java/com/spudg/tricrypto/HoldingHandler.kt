@@ -58,6 +58,8 @@ class HoldingHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
             } while (cursor.moveToNext())
         }
 
+        cursor.close()
+
         return holdings
 
     }
@@ -104,6 +106,8 @@ class HoldingHandler(context: Context, factory: SQLiteDatabase.CursorFactory?) :
                 }
             } while (cursor.moveToNext())
         }
+
+        cursor.close()
 
         return false
 
