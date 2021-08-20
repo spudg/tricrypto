@@ -29,7 +29,7 @@
             android:gravity="center"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="Portfolio"
+            android:text="@string/portfolio"
             android:textColor="@color/colorAccent"
             android:textSize="16sp" />
 
@@ -46,7 +46,7 @@
             android:gravity="center"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="Market"
+            android:text="@string/market"
             android:textColor="@color/colorAccent"
             android:textSize="16sp" />
 
@@ -64,7 +64,7 @@
             android:gravity="center"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="More"
+            android:text="@string/more"
             android:textColor="@color/colorAccent"
             android:textSize="16sp" />
 
@@ -81,7 +81,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/open_sans_light"
-            android:text="Market data"
+            android:text="@string/market_data"
             android:textColor="#000000"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -97,7 +97,8 @@
             android:foreground="?attr/selectableItemBackground"
             app:layout_constraintBottom_toBottomOf="@id/marketHeading"
             app:layout_constraintLeft_toRightOf="@id/marketHeading"
-            app:layout_constraintTop_toTopOf="@id/marketHeading" />
+            app:layout_constraintTop_toTopOf="@id/marketHeading"
+            android:contentDescription="@string/refresh" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -110,7 +111,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/open_sans_light"
-        android:text="Tap any to view detail"
+        android:text="@string/tap_any_to_view_detail"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

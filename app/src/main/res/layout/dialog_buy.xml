@@ -16,7 +16,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/open_sans_light"
-            android:text="Buy $"
+            android:text="@string/buy_dollar"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/open_sans_light"
-            android:hint="amount"
+            android:hint="@string/amount"
             android:inputType="numberDecimal" />
 
         <TextView
@@ -36,10 +36,9 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/open_sans_light"
-            android:text="of BTC"
+            android:text="@string/of_btc"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
-
 
     </LinearLayout>
 
@@ -50,18 +49,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/open_sans_light"
-        android:text="Available cash: $1,293.22"
+        android:text="@string/available_cash_1_293_22"
         android:textSize="14sp" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:baselineAligned="false"
-        android:orientation="horizontal">
-
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -78,7 +67,7 @@
             android:foreground="?attr/selectableItemBackground"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Buy"
+            android:text="@string/buy"
             android:textColor="@color/colorAccent" />
 
         <TextView
@@ -89,7 +78,7 @@
             android:foreground="?attr/selectableItemBackground"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Cancel"
+            android:text="@string/cancel"
             android:textColor="@android:color/black" />
 
     </LinearLayout>

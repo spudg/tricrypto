@@ -30,7 +30,7 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:textStyle="bold"
-            android:text="Portfolio"
+            android:text="@string/portfolio"
             android:textColor="@color/colorAccent"
             android:textSize="16sp" />
 
@@ -46,7 +46,7 @@
             android:gravity="center"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="Market"
+            android:text="@string/market"
             android:textColor="@color/colorAccent"
             android:textSize="16sp" />
 
@@ -64,7 +64,7 @@
             android:gravity="center"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="More"
+            android:text="@string/more"
             android:textColor="@color/colorAccent"
             android:textSize="16sp" />
 
@@ -88,7 +88,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/open_sans_light"
-                android:text="Portfolio - $512,242.66"
+                android:text="@string/portfolio_512_242_66"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -105,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans_light"
                 android:textColor="@android:color/holo_green_dark"
-                android:text="+3,425.61%" />
+                android:text="@string/_3_425_61" />
 
             <TextView
                 android:id="@+id/cryptoValue"
@@ -114,7 +114,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/open_sans_light"
-                android:text="Crypto value: $512,326.33"
+                android:text="@string/crypto_value_512_326_33"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@id/cashValue"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -129,7 +129,7 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
                 android:fontFamily="@font/open_sans_light"
-                android:text="Cash value: $6.33"
+                android:text="@string/cash_value_6_33"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -175,7 +175,7 @@
                 android:gravity="center_horizontal"
                 android:paddingLeft="30dp"
                 android:paddingRight="30dp"
-                android:text="No crypto holdings yet. Head over to the market tab to purchase your first."
+                android:text="@string/no_holdings_text"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"

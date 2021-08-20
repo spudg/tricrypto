@@ -29,7 +29,7 @@
             android:gravity="center"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="Portfolio"
+            android:text="@string/portfolio"
             android:textColor="@color/colorAccent"
             android:textSize="16sp" />
 
@@ -45,7 +45,7 @@
             android:gravity="center"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="Market"
+            android:text="@string/market"
             android:textColor="@color/colorAccent"
             android:textSize="16sp" />
 
@@ -63,7 +63,7 @@
             android:gravity="center"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="More"
+            android:text="@string/more"
             android:textColor="@color/colorAccent"
             android:textSize="16sp" />
 
@@ -75,7 +75,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -92,7 +92,8 @@
                     android:layout_height="75dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/logo" />
 
                 <TextView
                     android:id="@+id/symbol"
@@ -100,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:fontFamily="@font/open_sans_light"
-                    android:text="BTC"
+                    android:text="@string/btc"
                     android:textColor="#212121"
                     android:textSize="26sp"
                     app:layout_constraintBottom_toTopOf="@id/name"
@@ -113,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:fontFamily="@font/open_sans_light"
-                    android:text="Bitcoin"
+                    android:text="@string/bitcoin"
                     android:textColor="#212121"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -127,7 +128,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="20dp"
                     android:fontFamily="@font/open_sans_light"
-                    android:text="$79,022.93"
+                    android:text="@string/_79_022_93"
                     android:textColor="#212121"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -140,7 +141,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
                     android:fontFamily="@font/open_sans_light"
-                    android:text="1.29%"
+                    android:text="@string/_1_29"
                     android:textColor="@android:color/holo_green_dark"
                     android:textSize="14sp"
                     app:layout_constraintRight_toRightOf="parent"
@@ -152,7 +153,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:fontFamily="@font/open_sans_light"
-                    android:text="$1,928.33"
+                    android:text="@string/_1_928_33"
                     android:textColor="@android:color/holo_green_dark"
                     android:textSize="14sp"
                     app:layout_constraintRight_toLeftOf="@id/change24hPerc"
@@ -183,7 +184,7 @@
                     android:fontFamily="@font/open_sans_light"
                     android:foreground="?attr/selectableItemBackground"
                     android:padding="10dp"
-                    android:text="7d" />
+                    android:text="@string/_7d" />
 
                 <TextView
                     android:id="@+id/btn1m"
@@ -192,7 +193,7 @@
                     android:fontFamily="@font/open_sans_light"
                     android:foreground="?attr/selectableItemBackground"
                     android:padding="10dp"
-                    android:text="1m" />
+                    android:text="@string/_1m" />
 
                 <TextView
                     android:id="@+id/btn1y"
@@ -201,7 +202,7 @@
                     android:fontFamily="@font/open_sans_light"
                     android:foreground="?attr/selectableItemBackground"
                     android:padding="10dp"
-                    android:text="1y" />
+                    android:text="@string/_1y" />
 
                 <TextView
                     android:id="@+id/btn5y"
@@ -210,7 +211,7 @@
                     android:fontFamily="@font/open_sans_light"
                     android:foreground="?attr/selectableItemBackground"
                     android:padding="10dp"
-                    android:text="5y" />
+                    android:text="@string/_5y" />
 
             </LinearLayout>
 
@@ -235,7 +236,7 @@
                     android:foreground="?attr/selectableItemBackground"
                     android:gravity="center_horizontal"
                     android:padding="20dp"
-                    android:text="Buy"
+                    android:text="@string/buy"
                     android:textColor="@android:color/holo_green_dark"
                     android:textSize="16sp" />
 
@@ -254,7 +255,7 @@
                     android:foreground="?attr/selectableItemBackground"
                     android:gravity="center_horizontal"
                     android:padding="20dp"
-                    android:text="Sell"
+                    android:text="@string/sell"
                     android:textColor="@android:color/holo_red_dark"
                     android:textSize="16sp" />
 
@@ -279,7 +280,7 @@
                     android:layout_marginBottom="5dp"
                     android:fontFamily="@font/open_sans_light"
                     android:gravity="center_horizontal"
-                    android:text="Your BTC holdings"
+                    android:text="@string/your_btc_holdings"
                     android:textColor="#212121"
                     android:textSize="16sp" />
 
@@ -294,7 +295,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="Value: $1,502.33" />
+                        android:text="@string/value_1_502_33" />
 
                     <TextView
                         android:id="@+id/pReturn"
@@ -302,7 +303,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="+16.4%"
+                        android:text="@string/_16_4"
                         android:textColor="@android:color/holo_green_dark" />
 
                 </LinearLayout>
@@ -313,7 +314,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/open_sans_light"
                     android:gravity="center_horizontal"
-                    android:text="Amount: 0.19232" />
+                    android:text="@string/amount_0_19232" />
 
                 <TextView
                     android:id="@+id/cost"
@@ -321,7 +322,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/open_sans_light"
                     android:gravity="center_horizontal"
-                    android:text="Cost: $1,439.33" />
+                    android:text="@string/cost_1_439_33" />
 
             </LinearLayout>
 
@@ -329,7 +330,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:baselineAligned="false">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -343,7 +345,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="High (24h)"
+                        android:text="@string/high_24h"
                         android:textColor="#212121"
                         android:textSize="16sp" />
 
@@ -352,7 +354,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="$241,231.22"
+                        android:text="@string/_241_231_22"
                         android:textColor="#212121" />
 
                     <TextView
@@ -360,7 +362,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="Low (24h)"
+                        android:text="@string/low_24h"
                         android:textColor="#212121"
                         android:textSize="16sp" />
 
@@ -369,7 +371,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="$231,441.09"
+                        android:text="@string/_231_441_09"
                         android:textColor="#212121" />
 
                     <TextView
@@ -377,7 +379,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="Volume"
+                        android:text="@string/volume"
                         android:textColor="#212121"
                         android:textSize="16sp" />
 
@@ -386,7 +388,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="$61,499,231,441.09"
+                        android:text="@string/_61_499_231_441_09"
                         android:textColor="#212121" />
 
                     <TextView
@@ -394,7 +396,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="Market cap"
+                        android:text="@string/market_cap"
                         android:textColor="#212121"
                         android:textSize="16sp" />
 
@@ -403,7 +405,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="$420,333,212,423"
+                        android:text="@string/_420_333_212_423"
                         android:textColor="#212121" />
 
                     <TextView
@@ -411,7 +413,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="Fully diluted market cap"
+                        android:text="@string/fully_diluted_market_cap"
                         android:textColor="#212121"
                         android:textSize="16sp" />
 
@@ -420,7 +422,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="$918,283,231"
+                        android:text="@string/_918_283_231"
                         android:textColor="#212121" />
 
                     <TextView
@@ -428,7 +430,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="Market cap rank"
+                        android:text="@string/market_cap_rank"
                         android:textColor="#212121"
                         android:textSize="16sp" />
 
@@ -437,7 +439,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="13"
+                        android:text="@string/_13"
                         android:textColor="#212121" />
 
                 </LinearLayout>
@@ -454,7 +456,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="Circulating supply"
+                        android:text="@string/circulating_supply"
                         android:textColor="#212121"
                         android:textSize="16sp" />
 
@@ -463,7 +465,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="18,692,300"
+                        android:text="@string/_18_692_300"
                         android:textColor="#212121" />
 
                     <TextView
@@ -471,7 +473,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="Max supply"
+                        android:text="@string/max_supply"
                         android:textColor="#212121"
                         android:textSize="16sp" />
 
@@ -480,7 +482,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="21,000,000"
+                        android:text="@string/_21_000_000"
                         android:textColor="#212121" />
 
                     <TextView
@@ -488,7 +490,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="Total supply"
+                        android:text="@string/total_supply"
                         android:textColor="#212121"
                         android:textSize="16sp" />
 
@@ -497,7 +499,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="21,000,000"
+                        android:text="@string/_21_000_000"
                         android:textColor="#212121" />
 
                     <TextView
@@ -505,7 +507,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="All-time high"
+                        android:text="@string/all_time_high"
                         android:textColor="#212121"
                         android:textSize="16sp" />
 
@@ -514,7 +516,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="$9,941,231.22"
+                        android:text="@string/_9_941_231_22"
                         android:textColor="#212121" />
 
                     <TextView
@@ -522,7 +524,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="Date of all-time high"
+                        android:text="@string/date_of_all_time_high"
                         android:textColor="#212121"
                         android:textSize="16sp" />
 
@@ -531,7 +533,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="5 October 2024"
+                        android:text="@string/_5_october_2024"
                         android:textColor="#212121" />
 
                     <TextView
@@ -539,7 +541,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="All-time low"
+                        android:text="@string/all_time_low"
                         android:textColor="#212121"
                         android:textSize="16sp" />
 
@@ -548,7 +550,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="$0.22"
+                        android:text="@string/_0_22"
                         android:textColor="#212121" />
 
                     <TextView
@@ -556,7 +558,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="Date of all-time low"
+                        android:text="@string/date_of_all_time_low"
                         android:textColor="#212121"
                         android:textSize="16sp" />
 
@@ -565,7 +567,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_light"
-                        android:text="2 October 2023"
+                        android:text="@string/_2_october_2023"
                         android:textColor="#212121" />
 
                 </LinearLayout>
