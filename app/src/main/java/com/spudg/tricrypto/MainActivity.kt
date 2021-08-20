@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity() {
             val dbCash = CashHandler(this@MainActivity, null)
             val holdings = dbCrypto.getAllHoldings()
             var runningTotal = 0.00
-            val allCoins = coinGecko.getCoinMarkets("usd",null,null,250,1).markets
+            val allCoins = coinGecko.getCoinMarkets("usd", null, null, 250, 1).markets
             for (holding in holdings) {
                 for (coin in allCoins) {
                     if (coin.id == holding.id) {
@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
-            val totalReturn = (((runningTotal+(dbCash.getCashBal()).toFloat()))/100000)-1
+            val totalReturn = (((runningTotal + (dbCash.getCashBal()).toFloat())) / 100000) - 1
 
             val usdFormatter: NumberFormat = DecimalFormat("$#,##0.00")
             val percentFormatter: NumberFormat = DecimalFormat("#,##0.00%")

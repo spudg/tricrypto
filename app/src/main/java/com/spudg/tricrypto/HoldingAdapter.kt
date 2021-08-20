@@ -93,7 +93,7 @@ class HoldingAdapter(private val context: Context, private val holdings: ArrayLi
 
     private fun setDataFromAPI() = runBlocking {
         launch {
-            coins = coinGecko.getCoinMarkets("usd",null,null,250)
+            coins = coinGecko.getCoinMarkets("usd", null, null, 250)
         }
     }
 

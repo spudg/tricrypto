@@ -119,10 +119,11 @@ class CoinActivity : AppCompatActivity() {
                 val currentPrice = coinCurrentPrice.toFloat()
 
                 bindingSellDialog.ofSymbol.text = "of " + Globals.SELECTED_COIN_SYM.uppercase()
-                bindingSellDialog.currentHoldingValue.text = "Current holding value: " + usdFormatter.format(currentAmount*currentPrice)
+                bindingSellDialog.currentHoldingValue.text =
+                    "Current holding value: " + usdFormatter.format(currentAmount * currentPrice)
 
                 bindingSellDialog.tvSell.setOnClickListener {
-                    if (bindingSellDialog.etAmount.text.isEmpty())  {
+                    if (bindingSellDialog.etAmount.text.isEmpty()) {
                         Toast.makeText(this, "Enter a value to sell.", Toast.LENGTH_SHORT).show()
                     } else {
                         val dbCrypto = HoldingHandler(this, null)
@@ -160,7 +161,7 @@ class CoinActivity : AppCompatActivity() {
                     val currentAmount = dbCrypto.getAmount(Globals.SELECTED_COIN_SYM).toFloat()
                     val currentPrice = coinCurrentPrice.toFloat()
                     dbCrypto.removeHolding(Globals.SELECTED_COIN_SYM)
-                    dbCash.addCash((currentAmount*currentPrice).toString())
+                    dbCash.addCash((currentAmount * currentPrice).toString())
                     Toast.makeText(this, "Crypto sold.", Toast.LENGTH_SHORT).show()
                     sellDialog.dismiss()
                     setUpUI()
@@ -191,7 +192,8 @@ class CoinActivity : AppCompatActivity() {
             val currentCash = dbCash.getCashBal()
 
             bindingBuyDialog.ofSymbol.text = "of " + Globals.SELECTED_COIN_SYM.uppercase()
-            bindingBuyDialog.availableCash.text = "Available cash: " + usdFormatter.format(currentCash.toFloat())
+            bindingBuyDialog.availableCash.text =
+                "Available cash: " + usdFormatter.format(currentCash.toFloat())
 
             bindingBuyDialog.tvBuy.setOnClickListener {
                 val dbCrypto = HoldingHandler(this, null)
@@ -243,7 +245,7 @@ class CoinActivity : AppCompatActivity() {
             ).markets[0]
             val chartData: MarketChart =
                 coinGecko.getCoinMarketChartById(Globals.SELECTED_COIN_ID, "usd", days)
-            Log.e("test",chartData.prices.last().toString())
+            Log.e("test", chartData.prices.last().toString())
 
             coinCurrentPrice = coin.currentPrice.toString()
 
@@ -301,14 +303,14 @@ class CoinActivity : AppCompatActivity() {
             repeat(chartData.prices.size) {
                 yValues.add(chartData.prices[it].last().toString().toFloat())
             }
-            Log.e("test1",yValues.last().toString())
+            Log.e("test1", yValues.last().toString())
 
             // Make and configure chart
 
             repeat(chartData.prices.size) {
                 entriesLine.add(Entry(it.toFloat(), yValues[it]))
             }
-            Log.e("test2",entriesLine.size.toString())
+            Log.e("test2", entriesLine.size.toString())
             val dataSetLine = LineDataSet(entriesLine, "")
             val dataLine = LineData(dataSetLine)
 
