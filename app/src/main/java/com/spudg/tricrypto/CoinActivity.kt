@@ -283,10 +283,9 @@ class CoinActivity : AppCompatActivity() {
                 bindingCoin.totalSupply.text = getString(R.string.unlimited)
             }
             bindingCoin.ath.text = usdFormatter.format(coin.ath)
-            bindingCoin.athDate.text = coin.athDate
+            bindingCoin.athDate.text = (coin.athDate?.split("T"))?.first()
             bindingCoin.atl.text = usdFormatter.format(coin.atl)
-            bindingCoin.atlDate.text = coin.atlDate
-
+            bindingCoin.atlDate.text = (coin.atlDate?.split("T"))?.first()
 
             // Make data for chart
 
