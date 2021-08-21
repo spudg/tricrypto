@@ -11,8 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TriCrypto">
-        <activity
-            android:name=".AboutActivity" />
+        <activity android:name=".AboutActivity" />
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"

@@ -118,7 +118,10 @@ class MainActivity : AppCompatActivity() {
             val usdFormatter: NumberFormat = DecimalFormat("$#,##0.00")
             val percentFormatter: NumberFormat = DecimalFormat("#,##0.00%")
             bindingMain.portfolioHeading.text =
-                getString(R.string.portfolio_value, usdFormatter.format(runningTotal + dbCash.getCashBal().toFloat()))
+                getString(
+                    R.string.portfolio_value,
+                    usdFormatter.format(runningTotal + dbCash.getCashBal().toFloat())
+                )
 
             if (totalReturn >= 0) {
                 bindingMain.totalReturn.setTextColor(Color.GREEN)
@@ -126,7 +129,8 @@ class MainActivity : AppCompatActivity() {
                 bindingMain.totalReturn.setTextColor(Color.RED)
             }
             bindingMain.totalReturn.text = percentFormatter.format(totalReturn)
-            bindingMain.cryptoValue.text = getString(R.string.crypto_value, usdFormatter.format(runningTotal))
+            bindingMain.cryptoValue.text =
+                getString(R.string.crypto_value, usdFormatter.format(runningTotal))
             bindingMain.cashValue.text =
                 getString(R.string.cash_value, usdFormatter.format(dbCash.getCashBal().toFloat()))
 

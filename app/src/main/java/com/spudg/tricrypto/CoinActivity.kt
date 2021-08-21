@@ -99,7 +99,8 @@ class CoinActivity : AppCompatActivity() {
             } else {
                 bindingCoin.pReturn.setTextColor(Color.GREEN)
             }
-            bindingCoin.amount.text = getString(R.string.amount_figure, amountFormatter.format(amount))
+            bindingCoin.amount.text =
+                getString(R.string.amount_figure, amountFormatter.format(amount))
             bindingCoin.cost.text = getString(R.string.cost_figure, usdFormatter.format(cost))
 
 
@@ -118,9 +119,13 @@ class CoinActivity : AppCompatActivity() {
                 val currentAmount = dbCrypto.getAmount(Globals.SELECTED_COIN_SYM).toFloat()
                 val currentPrice = coinCurrentPrice.toFloat()
 
-                bindingSellDialog.ofSymbol.text = getString(R.string.of_symbol, Globals.SELECTED_COIN_SYM.uppercase())
+                bindingSellDialog.ofSymbol.text =
+                    getString(R.string.of_symbol, Globals.SELECTED_COIN_SYM.uppercase())
                 bindingSellDialog.currentHoldingValue.text =
-                    getString(R.string.current_holding_value_figure, usdFormatter.format(currentAmount * currentPrice))
+                    getString(
+                        R.string.current_holding_value_figure,
+                        usdFormatter.format(currentAmount * currentPrice)
+                    )
 
 
                 bindingSellDialog.tvSell.setOnClickListener {
@@ -187,9 +192,13 @@ class CoinActivity : AppCompatActivity() {
             val dbCash = CashHandler(this, null)
             val currentCash = dbCash.getCashBal()
 
-            bindingBuyDialog.ofSymbol.text = getString(R.string.of_symbol, Globals.SELECTED_COIN_SYM.uppercase())
+            bindingBuyDialog.ofSymbol.text =
+                getString(R.string.of_symbol, Globals.SELECTED_COIN_SYM.uppercase())
             bindingBuyDialog.availableCash.text =
-                getString(R.string.available_cash_figure, usdFormatter.format(currentCash.toFloat()))
+                getString(
+                    R.string.available_cash_figure,
+                    usdFormatter.format(currentCash.toFloat())
+                )
 
             bindingBuyDialog.tvBuy.setOnClickListener {
                 val existingCost = dbCrypto.getCost(Globals.SELECTED_COIN_SYM).toFloat()
