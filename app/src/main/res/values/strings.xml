@@ -5,7 +5,7 @@
     <string name="about_tricrypto">About triCrypto</string>
     <string name="tricryptologo">triCryptoLogo</string>
     <string name="tricrypto">triCrypto</string>
-    <string name="triCryptoDesc">triCrypto is a simple practice portfolio tracker for people who want to try out the world of crypto before investing real money. \n\nSpudg Studios is currently a one-man development studio and this is an early version of the application, so if you have any suggestions for new features that could be added or you\'ve found a big, please send an email below!</string>
+    <string name="triCryptoDesc">triCrypto is a simple practice portfolio tracker for people who want to try out the world of crypto before investing real money. \n\nSpudg Studios is currently a one-man development studio and this is an early version of the application, so if you have any suggestions for new features that could be added or you\'ve found a bug, please send an email below!</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="terms_of_use">Terms of Use</string>
     <string name="rate_on_play_store">Rate on Play Store</string>
