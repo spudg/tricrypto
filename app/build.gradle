@@ -11,11 +11,10 @@ android {
         applicationId "com.spudg.tricrypto"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 5
-        versionName "1.0.2"
+        versionCode 6
+        versionName "1.0.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        versionNameSuffix kotlin_version
     }
 
     compileOptions {
