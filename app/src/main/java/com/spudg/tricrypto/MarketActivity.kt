@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,6 +30,22 @@ class MarketActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
+        }
+
+        bindingMarket.moreBtn.setOnClickListener {
+            val popupMenu = PopupMenu(this, bindingMarket.moreBtn)
+            popupMenu.menuInflater.inflate(R.menu.menu_popup, popupMenu.menu)
+            popupMenu.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.actionAbout -> {
+                        val intent = Intent(this, AboutActivity::class.java)
+                        startActivity(intent)
+                    }
+                }
+                true
+            }
+
+            popupMenu.show()
         }
 
         var timerSec = 60

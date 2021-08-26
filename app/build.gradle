@@ -10,20 +10,14 @@ android {
     defaultConfig {
         applicationId "com.spudg.tricrypto"
         minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 3
+        targetSdkVersion 31
+        versionCode 5
         versionName "1.0.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        versionNameSuffix kotlin_version
     }
 
-    buildTypes {
-        release {
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
